@@ -3,7 +3,9 @@ package xyz.zimuju.common.basal;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
+
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 import xyz.zimuju.common.controller.ActivityController;
@@ -15,7 +17,7 @@ import xyz.zimuju.common.util.ToastUtils;
  * @time 2016/9/10-16:29
  * @version v1.0.0
  */
-public abstract class BasalActivity<T extends BasalPresenter> extends AppCompatActivity implements BasalView {
+public abstract class BasalActivity<T extends BasalPresenter> extends RxAppCompatActivity implements BasalView {
     protected T presenter;
 
     protected abstract int getLayoutId();
@@ -66,5 +68,16 @@ public abstract class BasalActivity<T extends BasalPresenter> extends AppCompatA
     @Override
     public void showToast(String message) {
         ToastUtils.showToast(getContext(), message);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+            case 1:
+
+                break;
+        }
     }
 }
