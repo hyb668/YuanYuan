@@ -132,7 +132,6 @@ dependencies {
     compile project(':Guide')
     compile project(':Dialog')
     compile project(':QRCode')
-    compile project(':Reader')
 
     // jar file
     compile files('libs/alipaySingle-20170510.jar')

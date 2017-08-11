@@ -31,10 +31,7 @@ public class DailyActivity extends BaseActivity {
     }
 
     public static void start(Activity activity, View v, String title, String date, String imageUrl) {
-        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                activity,
-                v,
-                activity.getResources().getString(R.string.image_transition));
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, v, activity.getResources().getString(R.string.image_transition));
 
         Intent intent = new Intent(activity, DailyActivity.class);
         intent.putExtra("title", title);
