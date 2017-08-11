@@ -26,8 +26,8 @@ android {
 
 dependencies {
     //butter knife
-    compile libraries.butterKnife
-    annotationProcessor libraries.butterKnifeCompiler
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //rx
     compile libraries.retrofit
@@ -63,9 +63,6 @@ dependencies {
 
     compile libraries.multidex
 
-    compile libraries.butterKnife
-    annotationProcessor libraries.butterKnifeCompiler
-
     compile libraries.umengAnalytics
 
     //RecyclerView Adapter
@@ -80,11 +77,6 @@ dependencies {
     compile libraries.design
     compile libraries.v4support
     compile libraries.constraintLayout
-    compile libraries.v4support
-    compile libraries.v7cardview
-
-    compile libraries.v7appcompat
-    compile libraries.design
     compile libraries.v4support
     compile libraries.v7cardview
 

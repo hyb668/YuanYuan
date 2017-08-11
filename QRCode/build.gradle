@@ -16,6 +16,5 @@ android {
 }
 
 dependencies {
-    testCompile libraries.junit
     compile libraries.zxingCore
 }
