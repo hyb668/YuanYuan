@@ -5,7 +5,7 @@ apply plugin: 'org.greenrobot.greendao'
 def configurations = rootProject.ext.configurations
 def libraries = rootProject.ext.dependencies
 
-static def buildTime() {
+def buildTime() {
     return new Date().format("yyyy-MM-dd-HH-mm")
 }
 
@@ -21,12 +21,6 @@ android {
         versionCode configurations.versionCode
         versionName configurations.versionName
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    // dataBinding 加入
-    dataBinding {
-        enabled = true
     }
 
     aaptOptions {
@@ -134,6 +128,7 @@ dependencies {
     annotationProcessor libraries.butterKnifeCompiler
 
     // project
+    compile project(':Common')
     compile project(':Guide')
     compile project(':Dialog')
     compile project(':QRCode')

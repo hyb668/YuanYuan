@@ -11,10 +11,8 @@ android {
         targetSdkVersion configurations.targetSdkVersion
         versionCode 10
         versionName "1.1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
