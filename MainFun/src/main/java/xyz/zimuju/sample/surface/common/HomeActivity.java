@@ -19,7 +19,7 @@ import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 import xyz.zimuju.sample.surface.news.HomeFragment;
-import xyz.zimuju.sample.surface.read.ReadingTabFragment;
+import xyz.zimuju.sample.surface.read.ReadingFragment;
 import xyz.zimuju.sample.surface.search.SearchActivity;
 import xyz.zimuju.sample.util.ViewUtils;
 
@@ -85,7 +85,7 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
             if (index == 0) {
                 toFragment = ViewUtils.createFragment(HomeFragment.class);
             } else if (index == 1) {
-                toFragment = ViewUtils.createFragment(ReadingTabFragment.class);
+                toFragment = ViewUtils.createFragment(ReadingFragment.class);
             } else {
                 toFragment = ViewUtils.createFragment(HomeFragment.class);
             }
@@ -111,8 +111,8 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
         if (currentFragment instanceof AbstractListFragment) {
             AbstractListFragment listFragment = (AbstractListFragment) currentFragment;
             return listFragment.scrollToTop();
-        } else if (currentFragment instanceof ReadingTabFragment) {
-            ReadingTabFragment readingTabFragment = (ReadingTabFragment) currentFragment;
+        } else if (currentFragment instanceof ReadingFragment) {
+            ReadingFragment readingTabFragment = (ReadingFragment) currentFragment;
             return readingTabFragment.scrollToTop();
         }
         return true;
@@ -130,11 +130,6 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
                 hideAppBar();
                 switchFragment(1);
                 break;
-
-//            case R.id.item_collect:
-//                hideAppBar();
-//                switchFragment(2);
-//                break;
         }
         return false;
     }

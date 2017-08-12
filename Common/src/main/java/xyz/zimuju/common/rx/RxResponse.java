@@ -2,14 +2,10 @@ package xyz.zimuju.common.rx;
 
 
 import io.reactivex.functions.Function;
-import xyz.zimuju.common.model.ResultData;
+import xyz.zimuju.common.entity.ResultData;
 import xyz.zimuju.common.util.EmptyUtil;
 import xyz.zimuju.common.util.GsonUtil;
 import xyz.zimuju.common.util.ZipUtils;
-
-/**
- * Created by 8000m on 2017/5/2.
- */
 
 public class RxResponse<T> implements Function<ResultData<T>, T> {
 
@@ -31,14 +27,7 @@ public class RxResponse<T> implements Function<ResultData<T>, T> {
         return data;
     }
 
-    /**
-     * json字符串先base64解密，再zip解压，再转换成对象T输出
-     *
-     * @param json
-     * @param clazz
-     * @param <T>
-     * @return
-     */
+    // json字符串先base64解密，再zip解压，再转换成对象T输出
     public static <T> T zipJsonToData(String json, Class<T> clazz) {
         T data = null;
         if (EmptyUtil.isNotEmpty(json)) {
@@ -57,8 +46,6 @@ public class RxResponse<T> implements Function<ResultData<T>, T> {
 
     @Override
     public T apply(ResultData<T> tResData) throws Exception {
-//        Intent intent=new Intent(CommonConstants.KEY_LOGIN_LOUT);
-//        CommonApplication.getInstance().getContext().sendBroadcast(intent);
         if (tResData.getCode() != 0) {
             throw new RxResponseException(tResData.getCode());
         }

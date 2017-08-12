@@ -9,6 +9,12 @@ import xyz.zimuju.common.basal.MRecyclerViewAdapter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.entity.gank.Category;
 
+/*
+ * @description GankCategoryAdapter :
+ * @author Nathaniel
+ * @time 2017/8/12 - 14:02
+ * @version 1.0.0
+ */
 public class GankCategoryAdapter extends MRecyclerViewAdapter<Category> {
 
     private int index = 0;

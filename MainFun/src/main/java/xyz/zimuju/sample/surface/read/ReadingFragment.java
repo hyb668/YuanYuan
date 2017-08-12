@@ -21,7 +21,7 @@ import xyz.zimuju.sample.entity.content.XianDuCategory;
 import xyz.zimuju.sample.rx.RxUtils;
 import xyz.zimuju.sample.util.ViewUtils;
 
-public class ReadingTabFragment extends BasalFragment {
+public class ReadingFragment extends BasalFragment {
     @BindView(R.id.tab_layout)
     TabLayout tab_layout;
 

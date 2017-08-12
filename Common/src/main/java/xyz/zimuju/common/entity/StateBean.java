@@ -1,17 +1,17 @@
-package xyz.zimuju.common.model;
+package xyz.zimuju.common.entity;
 
 public class StateBean {
 
-    private String stat;
+    private String state;
     private int code;
     private String compress;
 
-    public String getStat() {
-        return stat;
+    public String getState() {
+        return state;
     }
 
-    public void setStat(String stat) {
-        this.stat = stat;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public int getCode() {

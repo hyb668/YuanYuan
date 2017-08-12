@@ -1,6 +1,7 @@
 package xyz.zimuju.sample.surface.news;
 
 import xyz.zimuju.common.basal.BasalView;
+import xyz.zimuju.sample.entity.gank.GankResult;
 
 /*
  * @description NewsView
@@ -10,4 +11,5 @@ import xyz.zimuju.common.basal.BasalView;
  * @version 1.0.0
  */
 public interface NewsView extends BasalView {
+    void getGankResult(GankResult gankResult);
 }

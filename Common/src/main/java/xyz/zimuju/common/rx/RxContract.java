@@ -9,7 +9,7 @@ import xyz.zimuju.common.basal.BasalView;
 public abstract class RxContract<T extends BasalView> implements BasalPresenter<T> {
     protected Context context;
     protected T basalView;
-    private RxManager rxManager = new RxManager();
+    protected RxManager rxManager = new RxManager();
 
     @Override
     public void initialize() {

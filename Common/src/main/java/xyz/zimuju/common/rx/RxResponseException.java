@@ -1,9 +1,5 @@
 package xyz.zimuju.common.rx;
 
-/**
- * Created by 8000m on 2017/5/2.
- */
-
 public class RxResponseException extends Exception {
 
     private RxError rxError = new RxError();

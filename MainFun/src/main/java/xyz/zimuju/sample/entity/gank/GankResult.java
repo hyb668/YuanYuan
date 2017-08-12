@@ -4,7 +4,7 @@ import java.util.List;
 
 public class GankResult {
     private boolean error;
-    private List<Result> results;
+    private List<Gank> results;
 
     public boolean isError() {
         return error;
@@ -14,11 +14,11 @@ public class GankResult {
         this.error = error;
     }
 
-    public List<Result> getResults() {
+    public List<Gank> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<Gank> results) {
         this.results = results;
     }
 }

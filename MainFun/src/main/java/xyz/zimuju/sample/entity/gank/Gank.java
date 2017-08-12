@@ -1,6 +1,6 @@
 package xyz.zimuju.sample.entity.gank;
 
-public class Result {
+public class Gank {
     private String _id;
     private String createdAt;
     private String desc;

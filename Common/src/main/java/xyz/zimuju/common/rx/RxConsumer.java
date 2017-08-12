@@ -11,7 +11,6 @@ public abstract class RxConsumer<T> implements Consumer<T> {
 
     @Override
     public void accept(T t) throws Exception {
-
         onNext(t);
     }
 

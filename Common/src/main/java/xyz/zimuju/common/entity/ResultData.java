@@ -1,4 +1,4 @@
-package xyz.zimuju.common.model;
+package xyz.zimuju.common.entity;
 
 import java.util.List;
 
