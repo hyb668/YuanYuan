@@ -2,7 +2,7 @@ package xyz.zimuju.common.model;
 
 import java.util.List;
 
-public class ResData<T> extends StateBean {
+public class ResultData<T> extends StateBean {
     private T data;
     private List<T> list;
     private String json;

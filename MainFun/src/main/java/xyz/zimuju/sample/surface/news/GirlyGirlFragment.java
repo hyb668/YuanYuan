@@ -15,7 +15,7 @@ import xyz.zimuju.sample.entity.content.GanHuoData;
 import xyz.zimuju.sample.factory.ServiceFactory;
 import xyz.zimuju.sample.http.subscriber.HttpResultSubscriber;
 import xyz.zimuju.sample.rx.RxUtils;
-import xyz.zimuju.sample.surface.gank.AbsListFragment;
+import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 
 /*
  * @description GirlyGirlFragment : 妹纸页面
@@ -23,7 +23,7 @@ import xyz.zimuju.sample.surface.gank.AbsListFragment;
  * @time 2017/8/11 - 10:18
  * @version 1.0.0
  */
-public class GirlyGirlFragment extends AbsListFragment {
+public class GirlyGirlFragment extends AbstractListFragment {
 
     public static GirlyGirlFragment newInstance() {
         Bundle args = new Bundle();

@@ -2,7 +2,7 @@ package xyz.zimuju.common.rx;
 
 
 import io.reactivex.functions.Function;
-import xyz.zimuju.common.model.ResData;
+import xyz.zimuju.common.model.ResultData;
 import xyz.zimuju.common.util.EmptyUtil;
 import xyz.zimuju.common.util.GsonUtil;
 import xyz.zimuju.common.util.ZipUtils;
@@ -11,7 +11,7 @@ import xyz.zimuju.common.util.ZipUtils;
  * Created by 8000m on 2017/5/2.
  */
 
-public class RxResponse<T> implements Function<ResData<T>, T> {
+public class RxResponse<T> implements Function<ResultData<T>, T> {
 
     Class<T> clazz;
 
@@ -19,7 +19,7 @@ public class RxResponse<T> implements Function<ResData<T>, T> {
         this.clazz = clazz;
     }
 
-    public static <T> T parseResData(ResData<T> res, Class<T> clazz) {
+    public static <T> T parseResData(ResultData<T> res, Class<T> clazz) {
         T data = null;
 
         if ("gzip".equals(res.getCompress())) {
@@ -56,7 +56,7 @@ public class RxResponse<T> implements Function<ResData<T>, T> {
     }
 
     @Override
-    public T apply(ResData<T> tResData) throws Exception {
+    public T apply(ResultData<T> tResData) throws Exception {
 //        Intent intent=new Intent(CommonConstants.KEY_LOGIN_LOUT);
 //        CommonApplication.getInstance().getContext().sendBroadcast(intent);
         if (tResData.getCode() != 0) {

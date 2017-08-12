@@ -191,7 +191,7 @@
             android:value="Tencent"/>
 
         <activity
-            android:name=".surface.gank.MainActivity"
+            android:name=".surface.gank.GankHomeActivity"
             android:screenOrientation="portrait"/>
 
         <activity

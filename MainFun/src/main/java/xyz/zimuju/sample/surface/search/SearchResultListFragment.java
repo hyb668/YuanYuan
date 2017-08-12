@@ -11,10 +11,10 @@ import xyz.zimuju.sample.entity.content.SearchResult;
 import xyz.zimuju.sample.factory.ServiceFactory;
 import xyz.zimuju.sample.http.subscriber.HttpResultSubscriber;
 import xyz.zimuju.sample.rx.RxUtils;
-import xyz.zimuju.sample.surface.gank.AbsListFragment;
+import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 import xyz.zimuju.sample.widget.custom.LinearDecoration;
 
-public class SearchResultListFragment extends AbsListFragment {
+public class SearchResultListFragment extends AbstractListFragment {
     private String keyWord = "Android";
     private String category = "all";
 

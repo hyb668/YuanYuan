@@ -16,9 +16,9 @@ import xyz.zimuju.sample.entity.content.Daily;
 import xyz.zimuju.sample.factory.ServiceFactory;
 import xyz.zimuju.sample.http.subscriber.HttpResultSubscriber;
 import xyz.zimuju.sample.rx.RxUtils;
-import xyz.zimuju.sample.surface.gank.AbsListFragment;
+import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 
-public class HomeFragment extends AbsListFragment {
+public class HomeFragment extends AbstractListFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

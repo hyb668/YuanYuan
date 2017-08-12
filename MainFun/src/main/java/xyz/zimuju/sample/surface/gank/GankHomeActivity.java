@@ -19,7 +19,7 @@ import xyz.zimuju.sample.surface.search.SearchActivity;
 import xyz.zimuju.sample.surface.user.MineFragment;
 import xyz.zimuju.sample.util.ViewUtils;
 
-public class MainActivity extends BaseMainActivity {
+public class GankHomeActivity extends BaseMainActivity {
 
     private BottomNavigationView mBottomNavigationView;
     private FragmentManager mFragmentManager;
@@ -69,7 +69,7 @@ public class MainActivity extends BaseMainActivity {
         $(R.id.tv_search).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchActivity.start(MainActivity.this);
+                SearchActivity.start(GankHomeActivity.this);
             }
         });
     }
@@ -120,8 +120,8 @@ public class MainActivity extends BaseMainActivity {
 
     @Override
     protected boolean beforeOnBackPressed() {
-        if (mCurrentFragment instanceof AbsListFragment) {
-            AbsListFragment listFragment = (AbsListFragment) mCurrentFragment;
+        if (mCurrentFragment instanceof AbstractListFragment) {
+            AbstractListFragment listFragment = (AbstractListFragment) mCurrentFragment;
             return listFragment.scrollToTop();
         } else if (mCurrentFragment instanceof ReadingTabFragment) {
             ReadingTabFragment readingTabFragment = (ReadingTabFragment) mCurrentFragment;

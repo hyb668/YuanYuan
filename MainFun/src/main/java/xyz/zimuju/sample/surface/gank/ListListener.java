@@ -6,7 +6,7 @@ package xyz.zimuju.sample.surface.gank;
  * @time 2017/8/3 - 10:15
  * @version 1.0.0
  */
-public interface IList {
+public interface ListListener {
 
     void loadData(int pageIndex);
 

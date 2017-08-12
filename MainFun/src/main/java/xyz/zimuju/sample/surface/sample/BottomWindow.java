@@ -1,4 +1,4 @@
-package xyz.zimuju.sample.surface.example;
+package xyz.zimuju.sample.surface.sample;
 
 import android.app.Activity;
 import android.content.Context;

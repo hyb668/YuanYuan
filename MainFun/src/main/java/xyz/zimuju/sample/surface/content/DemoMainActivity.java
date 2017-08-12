@@ -51,7 +51,7 @@ import xyz.zimuju.common.widget.TimePickerWindow;
 import xyz.zimuju.common.widget.TopMenuWindow;
 import xyz.zimuju.common.widget.WebViewActivity;
 import xyz.zimuju.sample.R;
-import xyz.zimuju.sample.surface.example.BottomWindow;
+import xyz.zimuju.sample.surface.sample.BottomWindow;
 
 public class DemoMainActivity extends BaseActivity implements View.OnClickListener, OnBottomDragListener, AlertDialog.OnDialogButtonClickListener, ItemDialog.OnDialogItemClickListener, View.OnTouchListener {
     public static final int REQUEST_TO_CAMERA_SCAN = 22;

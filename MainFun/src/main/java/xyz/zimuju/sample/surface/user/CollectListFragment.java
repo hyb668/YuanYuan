@@ -15,7 +15,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.entity.bomb.CollectTable;
 import xyz.zimuju.sample.provider.CollectViewProvider;
-import xyz.zimuju.sample.surface.gank.AbsListFragment;
+import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 import xyz.zimuju.sample.util.AuthorityUtils;
 
 
@@ -24,7 +24,7 @@ import xyz.zimuju.sample.util.AuthorityUtils;
  * Date:2016/5/18
  * Time:14:23
  */
-public class CollectListFragment extends AbsListFragment {
+public class CollectListFragment extends AbstractListFragment {
 
     public static CollectListFragment newInstance() {
         Bundle args = new Bundle();

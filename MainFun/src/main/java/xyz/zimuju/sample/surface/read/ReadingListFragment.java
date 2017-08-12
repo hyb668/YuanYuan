@@ -16,9 +16,9 @@ import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.engine.XianDuService;
 import xyz.zimuju.sample.entity.content.XianDuItem;
 import xyz.zimuju.sample.rx.RxUtils;
-import xyz.zimuju.sample.surface.gank.AbsListFragment;
+import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 
-public class ReadingListFragment extends AbsListFragment {
+public class ReadingListFragment extends AbstractListFragment {
 
     private String category;
 

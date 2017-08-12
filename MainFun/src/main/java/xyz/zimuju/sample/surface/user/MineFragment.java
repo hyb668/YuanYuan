@@ -20,6 +20,7 @@ import xyz.zimuju.sample.loader.ImageLoader;
 import xyz.zimuju.sample.rx.RxBus;
 import xyz.zimuju.sample.surface.about.AboutActivity;
 import xyz.zimuju.sample.surface.gank.BaseFragment;
+import xyz.zimuju.sample.surface.gank.GankHomeActivity;
 import xyz.zimuju.sample.surface.gank.SubActivity;
 import xyz.zimuju.sample.util.AppUtils;
 import xyz.zimuju.sample.util.AuthorityUtils;
@@ -43,6 +44,9 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
 
     @BindView(R.id.mine_logout_tv)
     TextView logout;
+
+    @BindView(R.id.mine_gank_tv)
+    TextView toGank;
 
     @Override
     protected int getLayoutId() {
@@ -120,6 +124,10 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                     }
                 });
                 break;
+
+            case R.id.mine_gank_tv:
+                startActivity(new Intent(getContext(), GankHomeActivity.class));
+                break;
         }
     }
 
@@ -127,9 +135,11 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         if (AuthorityUtils.isLogin()) {
             username.setText(AuthorityUtils.getUserName());
             ImageLoader.displayImage(portrait, AuthorityUtils.getAvatar());
+            logout.setVisibility(View.VISIBLE);
         } else {
             username.setText(getString(R.string.mine_click_login));
             portrait.setImageDrawable(new ColorDrawable(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark)));
+            logout.setVisibility(View.GONE);
         }
     }
 }

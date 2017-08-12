@@ -1,6 +1,8 @@
 package xyz.zimuju.common.http;
 
 
+import android.text.TextUtils;
+
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.File;
@@ -16,16 +18,14 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import xyz.zimuju.common.util.FileUtils;
-import xyz.zimuju.common.util.StringUtils;
 
 public class CommonHttp {
 
     private static OkHttpClient okHttpClient;
     private static Retrofit retrofit;
-    private static String theUrl;
 
     public static Retrofit retrofit(String url) {
-        if (retrofit == null || StringUtils.isNotEquals(theUrl, url)) {
+        if (retrofit == null || !TextUtils.isEmpty(url)) {
             initOkHttp();
             retrofit = new Retrofit.Builder()
                     .baseUrl(url)
@@ -58,7 +58,6 @@ public class CommonHttp {
             String directory = FileUtils.getCachePath();  //设置缓存文件路径
             Cache cache = new Cache(new File(directory), cacheSize);
             builder.cache(cache);
-
             okHttpClient = builder.build();
         }
     }
@@ -69,9 +68,7 @@ public class CommonHttp {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                Response response = chain.proceed(request);
-
-                return response;
+                return chain.proceed(request);
             }
         };
     }
@@ -82,9 +79,7 @@ public class CommonHttp {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                Response response = chain.proceed(request);
-
-                return response;
+                return chain.proceed(request);
             }
         };
     }

@@ -21,7 +21,7 @@ import xyz.zimuju.sample.widget.loadmore.LoadMoreWrapper;
  * @time 2017/8/3 - 17:12
  * @version 1.0.0
  */
-public abstract class AbsListFragment extends LazyLoadFragment implements IList {
+public abstract class AbstractListFragment extends LazyLoadFragment implements ListListener {
 
     protected StatusViewLayout mStatusViewLayout;
     protected SwipeRefreshLayout mSwipeRefreshLayout;
@@ -69,7 +69,7 @@ public abstract class AbsListFragment extends LazyLoadFragment implements IList 
             @Override
             public void onLoadMore() {
                 if (isCanLoadMore)
-                    AbsListFragment.this.loadMore();
+                    AbstractListFragment.this.loadMore();
             }
         });
 

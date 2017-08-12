@@ -1,4 +1,4 @@
-package xyz.zimuju.sample.surface.example;
+package xyz.zimuju.sample.surface.sample;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,13 +14,13 @@ import xyz.zimuju.common.entity.Entry;
 import xyz.zimuju.common.util.StringUtils;
 import xyz.zimuju.sample.R;
 
-public class DemoView extends BaseView<Entry<String, String>> implements View.OnClickListener {
+public class DemoView2 extends BaseView<Entry<String, String>> implements View.OnClickListener {
     private static final String TAG = "DemoView";
     public ImageView ivDemoViewHead;
     public TextView tvDemoViewName;
     public TextView tvDemoViewNumber;
 
-    public DemoView(Activity context, Resources resources) {
+    public DemoView2(Activity context, Resources resources) {
         super(context, resources);
     }
 

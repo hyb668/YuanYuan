@@ -18,9 +18,9 @@ import xyz.zimuju.sample.entity.content.GanHuoData;
 import xyz.zimuju.sample.factory.ServiceFactory;
 import xyz.zimuju.sample.http.subscriber.HttpResultSubscriber;
 import xyz.zimuju.sample.rx.RxUtils;
-import xyz.zimuju.sample.surface.gank.AbsListFragment;
+import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 
-public class CategoryListFragment extends AbsListFragment {
+public class CategoryListFragment extends AbstractListFragment {
 
     private String mType;
 
