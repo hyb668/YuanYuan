@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import xyz.zimuju.common.basal.BasalFragment;
 import xyz.zimuju.common.basal.MRecyclerViewAdapter;
-import xyz.zimuju.common.widget.custom.CustomRecyclerView;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.adapter.gank.GankCategoryAdapter;
 import xyz.zimuju.sample.util.GankCategoryUtils;
@@ -19,7 +18,7 @@ public class NewsFragment extends BasalFragment implements MRecyclerViewAdapter.
     RecyclerView categoryRecyclerView;
 
     @BindView(R.id.news_container_recyclerview)
-    CustomRecyclerView containerRecyclerView;
+    RecyclerView containerRecyclerView;
 
     private GankCategoryAdapter gankCategoryAdapter;
 
@@ -52,9 +51,9 @@ public class NewsFragment extends BasalFragment implements MRecyclerViewAdapter.
 
     @Override
     public void onItemClick(ViewGroup parent, View view, int position) {
-       if (parent.getId() == categoryRecyclerView.getId()){
-           gankCategoryAdapter.setIndex(position);
-           gankCategoryAdapter.notifyDataSetChanged();
-       }
+        if (parent.getId() == categoryRecyclerView.getId()) {
+            gankCategoryAdapter.setIndex(position);
+            gankCategoryAdapter.notifyDataSetChanged();
+        }
     }
 }

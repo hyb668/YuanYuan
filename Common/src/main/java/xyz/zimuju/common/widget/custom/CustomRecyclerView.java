@@ -1,6 +1,5 @@
 package xyz.zimuju.common.widget.custom;
 
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -24,6 +23,4 @@ public class CustomRecyclerView extends RecyclerView {
         int heightSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightSpec);
     }
-
-
 }
