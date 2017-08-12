@@ -50,6 +50,11 @@ public class NewsFragment extends BasalFragment implements MRecyclerViewAdapter.
     }
 
     @Override
+    public void refreshData() {
+
+    }
+
+    @Override
     public void onItemClick(ViewGroup parent, View view, int position) {
         if (parent.getId() == categoryRecyclerView.getId()) {
             gankCategoryAdapter.setIndex(position);

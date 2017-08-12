@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import xyz.zimuju.common.basal.BasalFragment;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.event.SortChangeEvent;
 import xyz.zimuju.sample.rx.RxBus;
@@ -21,7 +23,7 @@ import xyz.zimuju.sample.util.CommonUtils;
 import xyz.zimuju.sample.util.PrefUtils;
 import xyz.zimuju.sample.util.SnackBarUtils;
 
-public class SortFragment extends BaseFragment {
+public class SortFragment extends BasalFragment {
 
     private RecyclerView mRecyclerView;
     private SortAdapter mAdapter;
@@ -33,6 +35,11 @@ public class SortFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.gank_fragment_sort;
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
     }
 
 
@@ -57,6 +64,11 @@ public class SortFragment extends BaseFragment {
                 showTips();
             }
         }, 100);
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 
     @Override

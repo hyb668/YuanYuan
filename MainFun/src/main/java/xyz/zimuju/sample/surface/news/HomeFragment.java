@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.drakeet.multitype.MultiTypeAdapter;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.constant.CategoryConstants;
 import xyz.zimuju.sample.engine.GankService;
 import xyz.zimuju.sample.entity.HttpResult;
@@ -67,5 +68,15 @@ public class HomeFragment extends AbstractListFragment {
     @Override
     protected int getInitPageIndex() {
         return 1;
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 }

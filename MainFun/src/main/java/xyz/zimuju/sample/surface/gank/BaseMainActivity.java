@@ -1,14 +1,15 @@
 package xyz.zimuju.sample.surface.gank;
 
+import xyz.zimuju.common.basal.BasalActivity;
 import xyz.zimuju.common.util.ToastUtils;
 
 /*
- * @description BaseMainActivity ：主界面的基类
+ * @description BaseMainActivity ：主界面的基类，双击back退出
  * @author Nathaniel
  * @time 2017/8/3 - 10:49
  * @version 1.0.0
  */
-public abstract class BaseMainActivity extends BaseActivity {
+public abstract class BaseMainActivity extends BasalActivity {
     private static final long MAX_DOUBLE_BACK_DURATION = 1500;
     private long lastBackKeyDownTick = 0;
 

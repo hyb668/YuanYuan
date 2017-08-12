@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.surface.news.GirlyGirlFragment;
 import xyz.zimuju.sample.surface.user.CollectListFragment;
 
@@ -35,5 +36,15 @@ public class SubActivity extends ToolbarActivity {
         //由于在之前使用了懒加载，所以加上这个才会显示
         if (fragment != null) fragment.setUserVisibleHint(true);
         return fragment;
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 }

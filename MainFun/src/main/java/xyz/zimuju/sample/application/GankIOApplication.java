@@ -18,16 +18,18 @@ public class GankIOApplication extends Application {
     private static GankIOApplication gankIOApplication;
 
     public static GankIOApplication getInstance() {
-        if (gankIOApplication == null) {
-            gankIOApplication = new GankIOApplication();
-        }
+//        if (gankIOApplication == null) {
+//            gankIOApplication = new GankIOApplication();
+//        }
         return gankIOApplication;
     }
+
 
     @Override
     public void onCreate() {
         super.onCreate();
 
+        gankIOApplication = this;
 
         // 内存泄露检测
         if (ConfigConstants.debugEnable) {

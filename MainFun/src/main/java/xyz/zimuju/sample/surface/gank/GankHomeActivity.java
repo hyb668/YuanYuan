@@ -1,7 +1,6 @@
 package xyz.zimuju.sample.surface.gank;
 
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
@@ -11,20 +10,29 @@ import android.support.v4.view.ViewCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import butterknife.BindView;
+import xyz.zimuju.common.basal.BasalFragment;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.surface.news.HomeFragment;
 import xyz.zimuju.sample.surface.read.ReadingTabFragment;
 import xyz.zimuju.sample.surface.search.SearchActivity;
-import xyz.zimuju.sample.surface.user.MineFragment;
 import xyz.zimuju.sample.util.ViewUtils;
 
-public class GankHomeActivity extends BaseMainActivity {
+public class GankHomeActivity extends BaseMainActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+    @BindView(R.id.appbar_layout)
+    AppBarLayout mAppBarLayout;
 
-    private BottomNavigationView mBottomNavigationView;
-    private FragmentManager mFragmentManager;
-    private Fragment mCurrentFragment;
-    private AppBarLayout mAppBarLayout;
+    @BindView(R.id.bottom_navigation_bnv)
+    BottomNavigationView bottomNavigationView;
+
+    @BindView(R.id.tv_search)
+    TextView search;
+
+    private FragmentManager fragmentManager;
+    private Fragment currentFragment;
 
     @Override
     protected int getLayoutId() {
@@ -32,46 +40,8 @@ public class GankHomeActivity extends BaseMainActivity {
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
-        // BmobUpdateAgent.update(this);
-        mFragmentManager = getSupportFragmentManager();
-        switchFragment(0);
-    }
-
-    @Override
-    protected void initView() {
-        mAppBarLayout = $(R.id.appbar_layout);
-        mBottomNavigationView = $(R.id.bottom_navigation);
-        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.item_home:
-                        showAppBar();
-                        switchFragment(0);
-                        break;
-                    case R.id.item_reading:
-                        hideAppBar();
-                        switchFragment(1);
-                        break;
-                    case R.id.item_collect:
-                        hideAppBar();
-                        switchFragment(2);
-                        break;
-                    default:
-                        break;
-                }
-                return false;
-            }
-        });
-        ViewCompat.setElevation(mAppBarLayout, ViewUtils.dp2px(this, 4));
-
-        $(R.id.tv_search).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SearchActivity.start(GankHomeActivity.this);
-            }
-        });
+    protected BasalPresenter initPresenter() {
+        return null;
     }
 
     private void hideAppBar() {
@@ -90,44 +60,80 @@ public class GankHomeActivity extends BaseMainActivity {
 
     @Override
     protected void initData() {
+        fragmentManager = getSupportFragmentManager();
+        switchFragment(0);
+    }
+
+    @Override
+    protected void viewOption() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        ViewCompat.setElevation(mAppBarLayout, ViewUtils.dp2px(this, 4));
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchActivity.start(GankHomeActivity.this);
+            }
+        });
     }
 
     private void switchFragment(int index) {
-        Fragment to = mFragmentManager.findFragmentByTag(index + "");
-        if (to == null) {
-            if (index == 0)
-                to = ViewUtils.createFragment(HomeFragment.class);
-            else if (index == 1)
-                to = ViewUtils.createFragment(ReadingTabFragment.class);
-            else if (index == 2)
-                to = ViewUtils.createFragment(MineFragment.class);
-            else
-                to = ViewUtils.createFragment(HomeFragment.class);
+        Fragment toFragment = fragmentManager.findFragmentByTag(index + "");
+        if (toFragment == null) {
+            if (index == 0) {
+                toFragment = ViewUtils.createFragment(HomeFragment.class);
+            } else if (index == 1) {
+                toFragment = ViewUtils.createFragment(ReadingTabFragment.class);
+            } else {
+                toFragment = ViewUtils.createFragment(HomeFragment.class);
+            }
         }
-        if (to == mCurrentFragment && mCurrentFragment instanceof BaseFragment) {
-            ((BaseFragment) mCurrentFragment).refreshData();
-        } else if (to.isAdded()) {
-            mFragmentManager.beginTransaction().hide(mCurrentFragment).show(to).commit();
+
+        if (toFragment == currentFragment && currentFragment instanceof BasalFragment) {
+            ((BasalFragment) currentFragment).refreshData();
+        } else if (toFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(currentFragment).show(toFragment).commit();
         } else {
-            to.setUserVisibleHint(true);
-            if (mCurrentFragment != null)
-                mFragmentManager.beginTransaction().hide(mCurrentFragment).add(R.id.frame_content, to, index + "").commit();
-            else
-                mFragmentManager.beginTransaction().add(R.id.frame_content, to, index + "").commit();
+            toFragment.setUserVisibleHint(true);
+            if (currentFragment != null) {
+                fragmentManager.beginTransaction().hide(currentFragment).add(R.id.frame_content, toFragment, index + "").commit();
+            } else {
+                fragmentManager.beginTransaction().add(R.id.frame_content, toFragment, index + "").commit();
+            }
         }
-        mCurrentFragment = to;
+        currentFragment = toFragment;
     }
 
     @Override
     protected boolean beforeOnBackPressed() {
-        if (mCurrentFragment instanceof AbstractListFragment) {
-            AbstractListFragment listFragment = (AbstractListFragment) mCurrentFragment;
+        if (currentFragment instanceof AbstractListFragment) {
+            AbstractListFragment listFragment = (AbstractListFragment) currentFragment;
             return listFragment.scrollToTop();
-        } else if (mCurrentFragment instanceof ReadingTabFragment) {
-            ReadingTabFragment readingTabFragment = (ReadingTabFragment) mCurrentFragment;
+        } else if (currentFragment instanceof ReadingTabFragment) {
+            ReadingTabFragment readingTabFragment = (ReadingTabFragment) currentFragment;
             return readingTabFragment.scrollToTop();
         }
-
         return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_home:
+                showAppBar();
+                switchFragment(0);
+                break;
+
+            case R.id.item_reading:
+                hideAppBar();
+                switchFragment(1);
+                break;
+
+//            case R.id.item_collect:
+//                hideAppBar();
+//                switchFragment(2);
+//                break;
+        }
+        return false;
     }
 }

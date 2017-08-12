@@ -47,6 +47,7 @@ public class OkHttpProvider {
         if (!httpCacheDirectory.exists()) {
             httpCacheDirectory.mkdirs();
         }
+
         httpClientBuilder.cache(new Cache(httpCacheDirectory, 100 * 1024 * 1024));
         //设置拦截器
         httpClientBuilder.addInterceptor(new UserAgentInterceptor("Android Device"));

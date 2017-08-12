@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.List;
 
 import me.drakeet.multitype.MultiTypeAdapter;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.engine.GankService;
 import xyz.zimuju.sample.entity.HttpResult;
 import xyz.zimuju.sample.entity.content.GanHuoData;
@@ -77,5 +78,15 @@ public class GirlyGirlFragment extends AbstractListFragment {
                 return GanHuoData.Meizhi.class;
             }
         };
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 }

@@ -44,8 +44,8 @@
     <string name="app_name">猿媛</string>
 
     <string name="no_network">当前无网络连接</string>
-    <string name="bye_burger_bottom_behavior">xyz.zimuju.gankio.behavior.byeburgernavigationview.ByeBurgerBottomBehavior</string>
-    <string name="bye_burger_title_behavior">xyz.zimuju.gankio.behavior.byeburgernavigationview.ByeBurgerTitleBehavior</string>
+    <string name="bye_burger_bottom_behavior">xyz.zimuju.sample.behavior.ByeBurgerBottomBehavior</string>
+    <string name="bye_burger_title_behavior">xyz.zimuju.sample.behavior..ByeBurgerTitleBehavior</string>
     <string name="no_permisstion_write">没有写入磁盘权限</string>
 
 

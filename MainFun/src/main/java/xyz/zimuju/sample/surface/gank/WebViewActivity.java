@@ -3,7 +3,6 @@ package xyz.zimuju.sample.surface.gank;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.view.menu.MenuBuilder;
@@ -18,12 +17,14 @@ import android.widget.ViewSwitcher;
 
 import java.lang.reflect.Method;
 
+import xyz.zimuju.common.basal.BasalActivity;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.application.GankIOApplication;
 import xyz.zimuju.sample.util.ClipboardUtils;
 import xyz.zimuju.sample.util.SystemShareUtils;
 
-public class WebViewActivity extends BaseActivity {
+public class WebViewActivity extends BasalActivity {
 
     public static String WEB_URL = "webViewUrl";
     public static String TITLE = "webViewTitle";
@@ -50,52 +51,9 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
-        mUrl = getIntent().getExtras().getString(WEB_URL);
-        mTitle = getIntent().getExtras().getString(TITLE);
-        mFragmentManager = getSupportFragmentManager();
+    protected BasalPresenter initPresenter() {
+        return null;
     }
-
-    @Override
-    protected void initView() {
-        //设置Toolbar
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);//决定左上角的图标是否可以点击
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//决定左上角图标的右侧是否有向左的小箭头
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        mTextSwitcher = $(R.id.textSwitcher);
-        mTextSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-            @SuppressWarnings("deprecation")
-            @Override
-            public View makeView() {
-                Context context = WebViewActivity.this;
-                TextView textView = new TextView(context);
-                textView.setTextAppearance(context, R.style.WebTitle);
-                textView.setSingleLine(true);
-                textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(final View v) {
-                        v.setSelected(!v.isSelected());
-                    }
-                });
-                return textView;
-            }
-        });
-        mTextSwitcher.setInAnimation(this, android.R.anim.fade_in);
-        mTextSwitcher.setOutAnimation(this, android.R.anim.fade_out);
-        mTextSwitcher.setText(mTitle);
-        mTextSwitcher.setSelected(true);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_webview_toolbar, menu);
@@ -140,8 +98,54 @@ public class WebViewActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        mUrl = getIntent().getExtras().getString(WEB_URL);
+        mTitle = getIntent().getExtras().getString(TITLE);
+        mFragmentManager = getSupportFragmentManager();
         mWebViewFragment = WebViewFragment.newInstance(mUrl);
         mFragmentManager.beginTransaction().replace(R.id.fl_content, mWebViewFragment).commit();
+
+        //设置Toolbar
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);//决定左上角的图标是否可以点击
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//决定左上角图标的右侧是否有向左的小箭头
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        mTextSwitcher = (TextSwitcher) findViewById(R.id.textSwitcher);
+        mTextSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @SuppressWarnings("deprecation")
+            @Override
+            public View makeView() {
+                Context context = WebViewActivity.this;
+                TextView textView = new TextView(context);
+                textView.setTextAppearance(context, R.style.WebTitle);
+                textView.setSingleLine(true);
+                textView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View v) {
+                        v.setSelected(!v.isSelected());
+                    }
+                });
+                return textView;
+            }
+        });
+        mTextSwitcher.setInAnimation(this, android.R.anim.fade_in);
+        mTextSwitcher.setOutAnimation(this, android.R.anim.fade_out);
+        mTextSwitcher.setText(mTitle);
+        mTextSwitcher.setSelected(true);
+
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 
 

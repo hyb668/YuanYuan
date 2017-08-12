@@ -11,6 +11,7 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import java.util.List;
 
 import me.drakeet.multitype.MultiTypeAdapter;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.engine.GankService;
 import xyz.zimuju.sample.entity.HttpResult;
@@ -98,5 +99,15 @@ public class CategoryListFragment extends AbstractListFragment {
                 return super.onFlattenClass(item);
             }
         };
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 }

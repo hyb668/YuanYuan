@@ -3,7 +3,6 @@ package xyz.zimuju.sample.surface.news;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -15,12 +14,13 @@ import android.widget.ImageView;
 
 import java.lang.reflect.Field;
 
+import xyz.zimuju.common.basal.BasalActivity;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.loader.ImageLoader;
-import xyz.zimuju.sample.surface.gank.BaseActivity;
 import xyz.zimuju.sample.surface.gank.ViewPicActivity;
 
-public class DailyActivity extends BaseActivity {
+public class DailyActivity extends BasalActivity {
 
     public static void start(Context context, String title, String date, String imageUrl) {
         Intent intent = new Intent(context, DailyActivity.class);
@@ -70,10 +70,6 @@ public class DailyActivity extends BaseActivity {
         return fragment;
     }
 
-    @Override
-    protected void init(Bundle savedInstanceState) {
-
-    }
 
     @Override
     protected int getLayoutId() {
@@ -81,9 +77,14 @@ public class DailyActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void initData() {
         setUpToolbar();
-        ImageView iv_image = $(R.id.iv_image);
+        ImageView iv_image = (ImageView) findViewById(R.id.iv_image);
         ImageLoader.displayImage(iv_image, getImageUrl());
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_content, getFragment())
@@ -94,17 +95,16 @@ public class DailyActivity extends BaseActivity {
                 ViewPicActivity.start(DailyActivity.this, v, getImageUrl());
             }
         });
-
     }
 
     @Override
-    protected void initData() {
+    protected void viewOption() {
 
     }
 
     private void setUpToolbar() {
-        CollapsingToolbarLayout collapsing_toolbar = $(R.id.collapsing_toolbar_layout);
-        Toolbar toolbar = $(R.id.toolbar);
+        CollapsingToolbarLayout collapsing_toolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

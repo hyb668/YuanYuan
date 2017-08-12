@@ -2,7 +2,6 @@ package xyz.zimuju.sample.surface.search;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -12,17 +11,25 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import butterknife.BindView;
+import xyz.zimuju.common.basal.BasalActivity;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
-import xyz.zimuju.sample.surface.gank.BaseActivity;
 import xyz.zimuju.sample.util.SnackBarUtils;
 
-public class SearchActivity extends BaseActivity {
+public class SearchActivity extends BasalActivity {
 
-    private Toolbar mToolbar;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
+    @BindView(R.id.et_keyword)
+    EditText mKeywordText;
+
+    @BindView(R.id.iv_select_cate)
+    ImageView mIvSelectCate;
+
     private String mKeyWord;
     private SearchResultListFragment mSearchResultListFragment;
-    private EditText mKeywordText;
-    private ImageView mIvSelectCate;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, SearchActivity.class);
@@ -35,15 +42,17 @@ public class SearchActivity extends BaseActivity {
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
-
+    protected BasalPresenter initPresenter() {
+        return null;
     }
 
+
     @Override
-    protected void initView() {
-        mIvSelectCate = $(R.id.iv_select_cate);
-        mKeywordText = $(R.id.et_keyword);
-        mToolbar = $(R.id.toolbar);
+    protected void initData() {
+        mSearchResultListFragment = SearchResultListFragment.newInstance(mKeywordText.getHint().toString(), "android");
+        mSearchResultListFragment.setUserVisibleHint(true);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_result, mSearchResultListFragment).commit();
+
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);//决定左上角的图标是否可以点击
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//决定左上角图标的右侧是否有向左的小箭头
@@ -73,10 +82,8 @@ public class SearchActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
-        mSearchResultListFragment = SearchResultListFragment.newInstance(mKeywordText.getHint().toString(), "android");
-        mSearchResultListFragment.setUserVisibleHint(true);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_result, mSearchResultListFragment).commit();
+    protected void viewOption() {
+
     }
 
     @Override

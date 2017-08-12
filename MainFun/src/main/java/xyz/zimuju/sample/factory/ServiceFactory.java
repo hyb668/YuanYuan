@@ -13,13 +13,13 @@ import xyz.zimuju.sample.provider.OkHttpProvider;
 
 public class ServiceFactory {
 
-    private final Gson mGson;
-    private OkHttpClient mOkHttpClient;
+    private final Gson gson;
+    private OkHttpClient okHttpClient;
 
 
     private ServiceFactory() {
-        mGson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
-        mOkHttpClient = OkHttpProvider.getDefaultOkHttpClient();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+        okHttpClient = OkHttpProvider.getDefaultOkHttpClient();
 
     }
 
@@ -29,7 +29,7 @@ public class ServiceFactory {
 
     public static ServiceFactory getNoCacheInstance() {
         ServiceFactory factory = SingletonHolder.INSTANCE;
-        factory.mOkHttpClient = OkHttpProvider.getOkHttpClient();
+        factory.okHttpClient = OkHttpProvider.getOkHttpClient();
         return factory;
     }
 
@@ -46,8 +46,8 @@ public class ServiceFactory {
         }
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .client(mOkHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(mGson))
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         return retrofit.create(serviceClass);

@@ -7,10 +7,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import xyz.zimuju.common.basal.BasalFragment;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.util.WebViewUtil;
 
-public class WebViewFragment extends BaseFragment {
+public class WebViewFragment extends BasalFragment {
 
     protected WebView mWebView;
     protected ProgressBar mProgressBar;
@@ -25,6 +27,11 @@ public class WebViewFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.gank_fragment_webview;
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
     }
 
     /**
@@ -50,6 +57,11 @@ public class WebViewFragment extends BaseFragment {
 
         mProgressBar.setMax(100);
         mWebView.loadUrl(getLoadUrl());
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 
     @Override

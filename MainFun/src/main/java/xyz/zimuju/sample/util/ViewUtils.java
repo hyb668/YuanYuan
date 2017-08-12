@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
-import xyz.zimuju.sample.surface.gank.BaseFragment;
+import xyz.zimuju.common.basal.BasalFragment;
 
 public class ViewUtils {
 
@@ -15,12 +15,12 @@ public class ViewUtils {
      * @param clazz the Fragment of create
      * @return
      */
-    public static BaseFragment createFragment(Class<?> clazz) {
-        BaseFragment resultFragment = null;
+    public static BasalFragment createFragment(Class<?> clazz) {
+        BasalFragment resultFragment = null;
         String className = clazz.getName();
         try {
             try {
-                resultFragment = (BaseFragment) Class.forName(className).newInstance();
+                resultFragment = (BasalFragment) Class.forName(className).newInstance();
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

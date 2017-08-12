@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.drakeet.multitype.MultiTypeAdapter;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.engine.GankService;
 import xyz.zimuju.sample.entity.HttpResult;
 import xyz.zimuju.sample.entity.content.DailyList;
@@ -126,5 +127,15 @@ public class RecentlyListFragment extends AbstractListFragment {
     @Override
     protected String getEmptyMsg() {
         return "今日暂无干货";
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 }

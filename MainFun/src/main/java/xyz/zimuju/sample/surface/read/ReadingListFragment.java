@@ -12,6 +12,7 @@ import java.util.List;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 import me.drakeet.multitype.MultiTypeAdapter;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.engine.XianDuService;
 import xyz.zimuju.sample.entity.content.XianDuItem;
@@ -75,5 +76,15 @@ public class ReadingListFragment extends AbstractListFragment {
     @Override
     protected int getInitPageIndex() {
         return 1;
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 }

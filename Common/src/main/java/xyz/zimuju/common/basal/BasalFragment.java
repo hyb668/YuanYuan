@@ -2,10 +2,11 @@ package xyz.zimuju.common.basal;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import butterknife.ButterKnife;
 import xyz.zimuju.common.util.ToastUtils;
@@ -16,7 +17,7 @@ import xyz.zimuju.common.util.ToastUtils;
  * @time 16-9-24-下午11:08
  * @version v1.0.0
  */
-public abstract class BasalFragment<T extends BasalPresenter> extends Fragment implements BasalView {
+public abstract class BasalFragment<T extends BasalPresenter> extends RxFragment implements BasalView {
     protected T presenter;
     private View rootView;
 
@@ -27,6 +28,8 @@ public abstract class BasalFragment<T extends BasalPresenter> extends Fragment i
     protected abstract void initData(); // 初始化数据
 
     protected abstract void viewOption(); // 绑定使徒控件操作
+
+    public abstract void refreshData();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

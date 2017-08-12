@@ -12,6 +12,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
+import xyz.zimuju.common.basal.BasalFragment;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.common.util.ToastUtils;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.component.SettingCenter;
@@ -19,14 +21,13 @@ import xyz.zimuju.sample.event.LoginEvent;
 import xyz.zimuju.sample.loader.ImageLoader;
 import xyz.zimuju.sample.rx.RxBus;
 import xyz.zimuju.sample.surface.about.AboutActivity;
-import xyz.zimuju.sample.surface.gank.BaseFragment;
 import xyz.zimuju.sample.surface.gank.GankHomeActivity;
 import xyz.zimuju.sample.surface.gank.SubActivity;
 import xyz.zimuju.sample.util.AppUtils;
 import xyz.zimuju.sample.util.AuthorityUtils;
 import xyz.zimuju.sample.util.SpannableStringUtils;
 
-public class MineFragment extends BaseFragment implements View.OnClickListener {
+public class MineFragment extends BasalFragment implements View.OnClickListener {
     @BindView(R.id.mine_username_tv)
     TextView username;
 
@@ -54,6 +55,11 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
     protected void initData() {
         RxBus.getInstance()
                 .toObservable(LoginEvent.class)
@@ -76,11 +82,16 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
+    protected void viewOption() {
+
+    }
+
+    @Override
     public void refreshData() {
         refreshUserInfo();
     }
 
-    @OnClick({R.id.mine_collect_tv, R.id.mine_username_tv, R.id.mine_feedback_tv, R.id.mine_about_tv, R.id.mine_logout_tv, R.id.mine_clear_cache_tv})
+    @OnClick({R.id.mine_collect_tv, R.id.mine_username_tv, R.id.mine_feedback_tv, R.id.mine_about_tv, R.id.mine_logout_tv, R.id.mine_clear_cache_tv, R.id.mine_gank_tv})
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

@@ -172,24 +172,6 @@
             android:theme="@style/Window"
             android:windowSoftInputMode="stateAlwaysHidden"/>
 
-        <provider
-            android:name="xyz.zimuju.common.webview.AgentWebFileProvider"
-            android:authorities="${applicationId}.AgentWebFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/web_download_paths"/>
-        </provider>
-
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="57a2b1be67e58ec1850025c5"/>
-
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="Tencent"/>
-
         <activity
             android:name=".surface.gank.GankHomeActivity"
             android:screenOrientation="portrait"/>
@@ -258,6 +240,24 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
+
+        <provider
+            android:name="xyz.zimuju.common.webview.AgentWebFileProvider"
+            android:authorities="${applicationId}.AgentWebFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/web_download_paths"/>
+        </provider>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57a2b1be67e58ec1850025c5"/>
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Tencent"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

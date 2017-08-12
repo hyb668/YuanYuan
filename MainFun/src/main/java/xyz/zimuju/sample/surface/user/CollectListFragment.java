@@ -12,6 +12,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import me.drakeet.multitype.MultiTypeAdapter;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.entity.bomb.CollectTable;
 import xyz.zimuju.sample.provider.CollectViewProvider;
@@ -19,11 +20,6 @@ import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 import xyz.zimuju.sample.util.AuthorityUtils;
 
 
-/**
- * Created by _SOLID
- * Date:2016/5/18
- * Time:14:23
- */
 public class CollectListFragment extends AbstractListFragment {
 
     public static CollectListFragment newInstance() {
@@ -74,5 +70,15 @@ public class CollectListFragment extends AbstractListFragment {
     @Override
     protected String getEmptyMsg() {
         return getString(R.string.tips_no_collect);
+    }
+
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 }

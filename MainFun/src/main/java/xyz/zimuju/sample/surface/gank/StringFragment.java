@@ -3,9 +3,11 @@ package xyz.zimuju.sample.surface.gank;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import xyz.zimuju.common.basal.BasalFragment;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 
-public class StringFragment extends BaseFragment {
+public class StringFragment extends BasalFragment {
     private String mText;
     private TextView mTvText;
 
@@ -22,6 +24,10 @@ public class StringFragment extends BaseFragment {
         return R.layout.gank_fragment_string;
     }
 
+    @Override
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
 
 
     @Override
@@ -31,6 +37,11 @@ public class StringFragment extends BaseFragment {
         } else {
             mTvText.setText("暂无信息");
         }
+    }
+
+    @Override
+    protected void viewOption() {
+
     }
 
     @Override

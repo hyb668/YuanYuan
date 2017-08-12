@@ -1,7 +1,6 @@
 package xyz.zimuju.sample.surface.gank;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,32 +11,17 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import xyz.zimuju.common.basal.BasalActivity;
 import xyz.zimuju.sample.R;
 
-public abstract class ToolbarActivity extends BaseActivity {
+public abstract class ToolbarActivity extends BasalActivity {
 
     protected AppBarLayout mAppBarLayout;
     protected TextSwitcher mTextSwitcher;
     protected FragmentManager mFragmentManager;
 
-    @Override
-    protected void init(Bundle savedInstanceState) {
-        mFragmentManager = getSupportFragmentManager();
-    }
-
-    @Override
-    protected void initView() {
-        mAppBarLayout = $(R.id.appbar_layout);
-        setUpToolBar();
-        if (!isHaveTitle()) {
-            mAppBarLayout.setVisibility(View.GONE);
-        }
-        setTitle(getToolbarTitle());
-
-    }
-
     private void setUpToolBar() {
-        Toolbar mToolbar = $(R.id.toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +33,7 @@ public abstract class ToolbarActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        mTextSwitcher = $(R.id.textSwitcher);
+        mTextSwitcher = (TextSwitcher) findViewById(R.id.textSwitcher);
         mTextSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
             @SuppressWarnings("deprecation")
             @Override
@@ -76,9 +60,17 @@ public abstract class ToolbarActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        mFragmentManager = getSupportFragmentManager();
         Fragment fragment = getFragment();
-        if (fragment != null)
+        if (fragment != null) {
             mFragmentManager.beginTransaction().replace(R.id.fl_content, fragment).commit();
+        }
+        mAppBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
+        setUpToolBar();
+        if (!isHaveTitle()) {
+            mAppBarLayout.setVisibility(View.GONE);
+        }
+        setTitle(getToolbarTitle());
     }
 
     @Override

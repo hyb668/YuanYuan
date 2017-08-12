@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -24,6 +23,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 import io.reactivex.functions.Consumer;
+import xyz.zimuju.common.basal.BasalActivity;
+import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.application.GankIOApplication;
 import xyz.zimuju.sample.http.subscriber.DownloadSubscriber;
@@ -34,7 +35,7 @@ import xyz.zimuju.sample.util.SLog;
 import xyz.zimuju.sample.util.SnackBarUtils;
 import xyz.zimuju.sample.util.SystemShareUtils;
 
-public class ViewPicActivity extends BaseActivity {
+public class ViewPicActivity extends BasalActivity {
     public final static String IMG_URLS = "ImageUrls";
     public final static String IMG_INDEX = "ImageIndex";
     private ViewPager mViewPager;
@@ -61,22 +62,26 @@ public class ViewPicActivity extends BaseActivity {
     }
 
     @Override
-    protected void init(Bundle savedInstanceState) {
-        mUrlList = getIntent().getExtras().getStringArrayList(IMG_URLS);
-        mCurrentIndex = getIntent().getExtras().getInt(IMG_INDEX);
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.gank_activity_view_pic;
     }
 
     @Override
-    protected void initView() {
+    protected BasalPresenter initPresenter() {
+        return null;
+    }
 
-        mViewPager = $(R.id.viewpager);
-        mTvIndex = $(R.id.tv_index);
-        mIvDownload = $(R.id.iv_download);
+    @Override
+    protected void initData() {
+        mUrlList = getIntent().getExtras().getStringArrayList(IMG_URLS);
+        mCurrentIndex = getIntent().getExtras().getInt(IMG_INDEX);
+
+        mViewPager.setAdapter(new MyViewPager(this));
+        mViewPager.setCurrentItem(mCurrentIndex);
+
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mTvIndex = (TextView) findViewById(R.id.tv_index);
+        mIvDownload = (AppCompatImageView) findViewById(R.id.iv_download);
         mTvIndex.setText((mCurrentIndex + 1) + "/" + mUrlList.size());
         mIvDownload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,12 +122,11 @@ public class ViewPicActivity extends BaseActivity {
 
             }
         });
+
     }
 
     @Override
-    protected void initData() {
-        mViewPager.setAdapter(new MyViewPager(this));
-        mViewPager.setCurrentItem(mCurrentIndex);
+    protected void viewOption() {
 
     }
 

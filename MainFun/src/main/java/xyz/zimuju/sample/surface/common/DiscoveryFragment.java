@@ -26,4 +26,9 @@ public class DiscoveryFragment extends BasalFragment {
     protected void viewOption() {
 
     }
+
+    @Override
+    public void refreshData() {
+
+    }
 }
