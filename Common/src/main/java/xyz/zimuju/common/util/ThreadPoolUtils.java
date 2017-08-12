@@ -15,12 +15,12 @@ import java.util.concurrent.TimeoutException;
 /**
  *
  */
-public class ThreadPoolUtil {
+public class ThreadPoolUtils {
 
     private ExecutorService exec;
     private ScheduledExecutorService scheduleExec;
 
-    private ThreadPoolUtil() {
+    private ThreadPoolUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -30,7 +30,7 @@ public class ThreadPoolUtil {
      * @param type         线程池类型
      * @param corePoolSize 只对Fixed和Scheduled线程池起效
      */
-    public ThreadPoolUtil(Type type, int corePoolSize) {
+    public ThreadPoolUtils(Type type, int corePoolSize) {
         // 构造有定时功能的线程池
         // ThreadPoolExecutor(corePoolSize, Integer.MAX_VALUE, 10L, TimeUnit.MILLISECONDS, new BlockingQueue<Runnable>)
         scheduleExec = Executors.newScheduledThreadPool(corePoolSize);

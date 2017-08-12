@@ -20,11 +20,11 @@ import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 import xyz.zimuju.sample.util.AuthorityUtils;
 
 
-public class CollectListFragment extends AbstractListFragment {
+public class CollectFragment extends AbstractListFragment {
 
-    public static CollectListFragment newInstance() {
+    public static CollectFragment newInstance() {
         Bundle args = new Bundle();
-        CollectListFragment fragment = new CollectListFragment();
+        CollectFragment fragment = new CollectFragment();
         fragment.setArguments(args);
         return fragment;
     }

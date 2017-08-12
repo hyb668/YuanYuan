@@ -8,17 +8,17 @@ import android.widget.TextView;
 /**
  * 倒计时工具类
  */
-public class TimeCountUtil extends CountDownTimer {
+public class TimeCountUtils extends CountDownTimer {
     private ChangeListener changeListener;
     private boolean clickable = true;
     private TextView textView;
 
-    public TimeCountUtil(Context context, long millisInFuture, long countDownInterval, TextView textView) {
+    public TimeCountUtils(Context context, long millisInFuture, long countDownInterval, TextView textView) {
         super(millisInFuture, countDownInterval);
         this.textView = textView;
     }
 
-    public TimeCountUtil(long millisInFuture, long countDownInterval, TextView textView) {
+    public TimeCountUtils(long millisInFuture, long countDownInterval, TextView textView) {
         super(millisInFuture, countDownInterval);
         this.textView = textView;
     }

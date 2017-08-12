@@ -6,9 +6,9 @@ import android.databinding.Bindable;
 import java.io.Serializable;
 import java.util.List;
 
-import xyz.zimuju.reader.http.common.ParamNames;
 import xyz.zimuju.reader.BR;
 import xyz.zimuju.reader.bean.movie.ImagesBean;
+import xyz.zimuju.reader.http.common.ParamNames;
 
 public class BooksBean extends BaseObservable implements Serializable {
 

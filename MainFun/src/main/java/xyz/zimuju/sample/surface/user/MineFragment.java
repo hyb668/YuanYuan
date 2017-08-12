@@ -1,9 +1,7 @@
 package xyz.zimuju.sample.surface.user;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +12,7 @@ import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
 import xyz.zimuju.common.basal.BasalFragment;
 import xyz.zimuju.common.basal.BasalPresenter;
+import xyz.zimuju.common.util.EmptyUtil;
 import xyz.zimuju.common.util.ToastUtils;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.component.SettingCenter;
@@ -91,6 +90,12 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
         refreshUserInfo();
     }
 
+    @Override
+    public void onResume() {
+        refreshUserInfo();
+        super.onResume();
+    }
+
     @OnClick({R.id.mine_collect_tv, R.id.mine_username_tv, R.id.mine_feedback_tv, R.id.mine_about_tv, R.id.mine_logout_tv, R.id.mine_clear_cache_tv, R.id.mine_gank_tv})
     @Override
     public void onClick(View view) {
@@ -106,6 +111,8 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
             case R.id.mine_username_tv:
                 if (!AuthorityUtils.isLogin()) {
                     startActivity(new Intent(getContext(), LoginActivity.class));
+                } else {
+                    // 修改用户名
                 }
                 break;
 
@@ -145,11 +152,15 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
     private void refreshUserInfo() {
         if (AuthorityUtils.isLogin()) {
             username.setText(AuthorityUtils.getUserName());
-            ImageLoader.displayImage(portrait, AuthorityUtils.getAvatar());
+            if (EmptyUtil.isNotEmpty(AuthorityUtils.getAvatar())) {
+                ImageLoader.displayImage(portrait, AuthorityUtils.getAvatar());
+            } else {
+                portrait.setImageResource(R.mipmap.icon_portrait_default);
+            }
             logout.setVisibility(View.VISIBLE);
         } else {
             username.setText(getString(R.string.mine_click_login));
-            portrait.setImageDrawable(new ColorDrawable(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark)));
+            portrait.setImageResource(R.mipmap.icon_portrait_default);
             logout.setVisibility(View.GONE);
         }
     }

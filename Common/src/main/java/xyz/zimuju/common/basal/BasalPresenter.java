@@ -8,8 +8,6 @@ package xyz.zimuju.common.basal;
  * @version 1.0.0
  */
 public interface BasalPresenter<T extends BasalView> {
-    void initialize();
-
     void attachView(T basalView);
 
     void detachView();

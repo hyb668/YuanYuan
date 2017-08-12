@@ -37,6 +37,10 @@ public class GankNewsAdapter extends MRecyclerViewAdapter<Gank> {
             ImageLoader.displayImage(gankViewHolder.image, gank.getUrl());
             gankViewHolder.description.setText(gank.getDesc());
         }
+
+        if (position == dataList.size()) {
+            gankViewHolder.split.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -48,6 +52,7 @@ public class GankNewsAdapter extends MRecyclerViewAdapter<Gank> {
         TextView create;
         ImageView image;
         TextView description;
+        View split;
 
 
         GankViewHolder(View itemView) {
@@ -55,6 +60,7 @@ public class GankNewsAdapter extends MRecyclerViewAdapter<Gank> {
             create = (TextView) itemView.findViewById(R.id.item_gank_create_tv);
             description = (TextView) itemView.findViewById(R.id.item_gank_desc_tv);
             image = (ImageView) itemView.findViewById(R.id.item_gank_image_iv);
+            split = itemView.findViewById(R.id.item_gank_split_v);
             itemView.setOnClickListener(this);
         }
 

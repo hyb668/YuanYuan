@@ -31,7 +31,7 @@ public class DataManager implements InitializeHelper {
     }
 
     @Override
-    public void initialize(Context context) {
+    public void initialize(Context context, String sharedPreferencesName) {
         this.context = context;
     }
 

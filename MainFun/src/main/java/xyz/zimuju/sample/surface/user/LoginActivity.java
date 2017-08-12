@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
@@ -13,6 +12,7 @@ import xyz.zimuju.common.basal.BasalActivity;
 import xyz.zimuju.common.util.EmptyUtil;
 import xyz.zimuju.common.widget.ClearEditText;
 import xyz.zimuju.sample.R;
+import xyz.zimuju.sample.util.UserPreferencesUtils;
 
 /*
  * @description LoginActivity ：登陆界面
@@ -103,5 +103,7 @@ public class LoginActivity extends BasalActivity<LoginPresenter> implements View
         if (EmptyUtil.isEmpty(bmobUser)) {
             return;
         }
+        UserPreferencesUtils.getInstance().saveUser(bmobUser);
+        finish();
     }
 }

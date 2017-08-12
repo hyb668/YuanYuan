@@ -20,7 +20,7 @@ import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.event.SortChangeEvent;
 import xyz.zimuju.sample.rx.RxBus;
 import xyz.zimuju.sample.util.CommonUtils;
-import xyz.zimuju.sample.util.PrefUtils;
+import xyz.zimuju.sample.util.SharedPreferencesUtils;
 import xyz.zimuju.sample.util.SnackBarUtils;
 
 public class SortFragment extends BasalFragment {
@@ -44,12 +44,12 @@ public class SortFragment extends BasalFragment {
 
 
     private void showTips() {
-        boolean isHaveTips = PrefUtils.getBoolean("isHaveTips", true);
+        boolean isHaveTips = SharedPreferencesUtils.getInstance().getBoolean("isHaveTips", true);
         if (isHaveTips) {
             SnackBarUtils.makeLong(mRecyclerView, "长按条目进行拖拽排序").info("我知道了", new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PrefUtils.putBoolean("isHaveTips", false);
+                    SharedPreferencesUtils.getInstance().putBoolean("isHaveTips", false);
                 }
             });
         }
@@ -97,7 +97,7 @@ public class SortFragment extends BasalFragment {
             }
         }
         String str = builder.toString();
-        PrefUtils.putString("HomeCategory", str);
+        SharedPreferencesUtils.getInstance().putString("HomeCategory", str);
         return str;
     }
 

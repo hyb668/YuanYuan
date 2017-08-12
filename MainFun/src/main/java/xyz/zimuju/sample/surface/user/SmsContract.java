@@ -84,6 +84,7 @@ public class SmsContract extends RxContract<RegisterView> implements SmsPresente
                     // 短信验证码已验证成功
                     basalView.verifyCodeResult(true);
                 } else {
+                    basalView.verifyCodeResult(false);
                     basalView.showToast("验证失败，原因：" + ex.getMessage());
                 }
             }

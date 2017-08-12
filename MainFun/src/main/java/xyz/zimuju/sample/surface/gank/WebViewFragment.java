@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 import xyz.zimuju.common.basal.BasalFragment;
 import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
-import xyz.zimuju.sample.util.WebViewUtil;
+import xyz.zimuju.sample.util.WebViewUtils;
 
 public class WebViewFragment extends BasalFragment {
 
@@ -51,7 +51,7 @@ public class WebViewFragment extends BasalFragment {
     protected void initData() {
         mProgressBar = (ProgressBar) getRootView().findViewById(R.id.progressbar);
         mWebView = (WebView) getRootView().findViewById(R.id.webView);
-        WebViewUtil.setWebViewOptions(mWebView);
+        WebViewUtils.setWebViewOptions(mWebView);
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient());
 

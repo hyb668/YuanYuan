@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 
 import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.surface.news.GirlyGirlFragment;
-import xyz.zimuju.sample.surface.user.CollectListFragment;
+import xyz.zimuju.sample.surface.user.CollectFragment;
 
 public class SubActivity extends ToolbarActivity {
     public final static int TYPE_MEIZHI = 0X000001;
@@ -31,7 +31,7 @@ public class SubActivity extends ToolbarActivity {
         if (type == TYPE_MEIZHI) {
             fragment = GirlyGirlFragment.newInstance();
         } else if (type == TYPE_COLLECT) {
-            fragment = CollectListFragment.newInstance();
+            fragment = CollectFragment.newInstance();
         }
         //由于在之前使用了懒加载，所以加上这个才会显示
         if (fragment != null) fragment.setUserVisibleHint(true);

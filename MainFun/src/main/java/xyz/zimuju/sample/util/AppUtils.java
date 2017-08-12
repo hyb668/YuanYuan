@@ -23,19 +23,19 @@ import xyz.zimuju.sample.entity.bomb.FeedBack;
 public class AppUtils {
 
     public static boolean isFirstRun() {
-        return PrefUtils.getBoolean("isFirstRun", true);
+        return SharedPreferencesUtils.getInstance().getBoolean("isFirstRun", true);
     }
 
     public static void setFirstRun(boolean isFirstRun) {
-        PrefUtils.putBoolean("isFirstRun", isFirstRun);
+        SharedPreferencesUtils.getInstance().putBoolean("isFirstRun", isFirstRun);
     }
 
     public static boolean shakePicture() {
-        return PrefUtils.getBoolean("shakePicture", true);
+        return SharedPreferencesUtils.getInstance().getBoolean("shakePicture", true);
     }
 
     public static void setShakePicture(boolean isEnable) {
-        PrefUtils.putBoolean("shakePicture", isEnable);
+        SharedPreferencesUtils.getInstance().putBoolean("shakePicture", isEnable);
     }
 
 

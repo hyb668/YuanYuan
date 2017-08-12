@@ -6,7 +6,7 @@ import android.os.Looper;
 import java.io.File;
 
 import xyz.zimuju.sample.application.GankIOApplication;
-import xyz.zimuju.sample.util.PrefUtils;
+import xyz.zimuju.sample.util.SharedPreferencesUtils;
 
 /*
  * @description SettingCenter ：设置中心
@@ -17,11 +17,11 @@ import xyz.zimuju.sample.util.PrefUtils;
 public class SettingCenter {
 
     public static boolean getOnlyWifiLoadImage() {
-        return PrefUtils.getBoolean("getOnlyWifiLoadImage", false);
+        return SharedPreferencesUtils.getInstance().getBoolean("getOnlyWifiLoadImage", false);
     }
 
     public static void setOnlyWifiLoadImage(boolean isEnable) {
-        PrefUtils.putBoolean("getOnlyWifiLoadImage", isEnable);
+        SharedPreferencesUtils.getInstance().putBoolean("getOnlyWifiLoadImage", isEnable);
     }
 
     // 计算缓存大小

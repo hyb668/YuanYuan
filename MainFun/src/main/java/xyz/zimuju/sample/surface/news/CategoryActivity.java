@@ -22,7 +22,7 @@ public class CategoryActivity extends ToolbarActivity {
 
     @Override
     protected Fragment getFragment() {
-        CategoryListFragment fragment = CategoryListFragment.newInstance(getIntent().getExtras().getString("type"));
+        CategoryFragment fragment = CategoryFragment.newInstance(getIntent().getExtras().getString("type"));
         fragment.setUserVisibleHint(true);
         return fragment;
     }

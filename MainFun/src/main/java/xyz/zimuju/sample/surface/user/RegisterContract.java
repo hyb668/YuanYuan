@@ -37,10 +37,10 @@ public class RegisterContract extends SmsContract implements RegisterPresenter {
 
     @Override
     public void login(String... parameters) {
-        BmobUser bu2 = new BmobUser();
-        bu2.setUsername("lucky");
-        bu2.setPassword("123456");
-        bu2.login(new SaveListener<BmobUser>() {
+        BmobUser bmobUser = new BmobUser();
+        bmobUser.setUsername(parameters[0]);
+        bmobUser.setPassword(parameters[1]);
+        bmobUser.login(new SaveListener<BmobUser>() {
 
             @Override
             public void done(BmobUser bmobUser, BmobException e) {

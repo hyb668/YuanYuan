@@ -30,9 +30,9 @@ public abstract class BasalActivity<T extends BasalPresenter> extends RxAppCompa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         initialize();
+        super.onCreate(savedInstanceState);
     }
 
     @SuppressWarnings("unchecked")

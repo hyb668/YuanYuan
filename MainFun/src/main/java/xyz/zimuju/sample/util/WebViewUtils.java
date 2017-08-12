@@ -9,7 +9,7 @@ import android.webkit.WebView;
 
 import java.io.File;
 
-public class WebViewUtil {
+public class WebViewUtils {
     public static void setWebViewOptions(WebView webView) {
         Context context = webView.getContext().getApplicationContext();
         //设置编码

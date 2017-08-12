@@ -12,13 +12,9 @@ public abstract class RxContract<T extends BasalView> implements BasalPresenter<
     protected RxManager rxManager = new RxManager();
 
     @Override
-    public void initialize() {
-        this.context = basalView.getContext();
-    }
-
-    @Override
     public void attachView(T view) {
         this.basalView = view;
+        context = basalView.getContext();
     }
 
     @Override

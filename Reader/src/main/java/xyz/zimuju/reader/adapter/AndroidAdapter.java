@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import xyz.zimuju.reader.R;
 import xyz.zimuju.reader.base.BaseRecyclerViewAdapter;
 import xyz.zimuju.reader.base.BaseRecyclerViewHolder;

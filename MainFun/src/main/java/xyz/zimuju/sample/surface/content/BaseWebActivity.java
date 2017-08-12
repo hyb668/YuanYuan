@@ -23,7 +23,6 @@ import xyz.zimuju.sample.R;
 
 public class BaseWebActivity extends AppCompatActivity {
 
-
     protected AgentWeb mAgentWeb;
     private LinearLayout mLinearLayout;
     private Toolbar mToolbar;

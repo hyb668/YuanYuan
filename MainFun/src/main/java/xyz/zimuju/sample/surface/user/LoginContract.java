@@ -11,8 +11,6 @@ public class LoginContract extends RxContract<LoginView> implements LoginPresent
         BmobUser bmobUser = new BmobUser();
         bmobUser.setUsername(parameters[0]);
         bmobUser.setPassword(parameters[1]);
-        bmobUser.setMobilePhoneNumber(parameters[2]);
-        bmobUser.setMobilePhoneNumberVerified(true);
         bmobUser.login(new SaveListener<BmobUser>() {
             @Override
             public void done(BmobUser bmobUser, BmobException e) {

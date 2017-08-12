@@ -16,12 +16,30 @@ import cn.bmob.v3.BmobUser;
  * mobilePhoneNumberVerified：手机号码的认证状态（可选）。
  */
 public class BombUser extends BmobUser {
+    private String portrait;
+    private String signature;
     private Integer gander;
     private String nickname;
     private Integer age;
     private String tencent;
     private String wechat;
     private String sina;
+
+    public String getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
 
     public Integer getGander() {
         return gander;

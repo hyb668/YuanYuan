@@ -1,4 +1,3 @@
-
 package xyz.zimuju.sample.surface.sample;
 
 import android.content.Context;
@@ -17,6 +16,7 @@ import android.widget.RadioGroup;
 import xyz.zimuju.common.slippage.SwipeBackActivity;
 import xyz.zimuju.common.slippage.SwipeBackLayout;
 import xyz.zimuju.sample.R;
+import xyz.zimuju.sample.util.SharedPreferencesUtils;
 
 public class DemoActivity extends SwipeBackActivity implements View.OnClickListener {
     private static final int VIBRATE_DURATION = 20;
@@ -85,11 +85,11 @@ public class DemoActivity extends SwipeBackActivity implements View.OnClickListe
     }
 
     private void saveTrackingMode(int flag) {
-        PreferenceUtils.setPrefInt(getApplicationContext(), mKeyTrackingMode, flag);
+        SharedPreferencesUtils.getInstance().putInt(mKeyTrackingMode, flag);
     }
 
     private void restoreTrackingMode() {
-        int flag = PreferenceUtils.getPrefInt(getApplicationContext(), mKeyTrackingMode, SwipeBackLayout.EDGE_LEFT);
+        int flag = SharedPreferencesUtils.getInstance().getInt(mKeyTrackingMode, SwipeBackLayout.EDGE_LEFT);
         mSwipeBackLayout.setEdgeTrackingEnabled(flag);
         switch (flag) {
             case SwipeBackLayout.EDGE_LEFT:
@@ -126,7 +126,7 @@ public class DemoActivity extends SwipeBackActivity implements View.OnClickListe
         if (mBgColors == null) {
             Resources resource = getResources();
             //noinspection deprecation
-            mBgColors = new int[] {
+            mBgColors = new int[]{
                     resource.getColor(R.color.androidColorA),
                     resource.getColor(R.color.androidColorB),
                     resource.getColor(R.color.androidColorC),

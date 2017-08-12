@@ -37,7 +37,6 @@ public class NavigationActivity extends FragmentActivity implements RadioGroup.O
         bindView();
     }
 
-
     private void initView() {
         fragmentList = new ArrayList<>();
         Fragment newsFragment = new NewsFragment();

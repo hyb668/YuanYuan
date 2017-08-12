@@ -21,70 +21,70 @@ public class AuthorityUtils {
     }
 
     public static boolean isLogin() {
-        return PrefUtils.getBoolean("isLogin", false);
+        return UserPreferencesUtils.getInstance().getBoolean("logged", false);
     }
 
     public static void setLogin(boolean isLogin) {
-        PrefUtils.putBoolean("isLogin", isLogin);
+        UserPreferencesUtils.getInstance().putBoolean("logged", isLogin);
     }
 
     public static String getUserName() {
-        return PrefUtils.getString("UserName", "");
+        return UserPreferencesUtils.getInstance().getString("username", "");
     }
 
-    public static void setUserName(String userName) {
-        PrefUtils.putString("UserName", userName);
+    public static void setUserName(String username) {
+        UserPreferencesUtils.getInstance().putString("username", username);
     }
 
     public static String getDescription() {
-        return PrefUtils.getString("Description", "未填写");
+        return UserPreferencesUtils.getInstance().getString("signature", "未填写");
     }
 
     public static void setDescription(String desc) {
-        PrefUtils.putString("Description", desc);
+        UserPreferencesUtils.getInstance().putString("signature", desc);
     }
 
     public static String getAvatar() {
-        return PrefUtils.getString("Avatar", "");
+        return UserPreferencesUtils.getInstance().getString("portrait", "");
     }
 
     public static void setAvatar(String avatar) {
-        PrefUtils.putString("Avatar", avatar);
+        UserPreferencesUtils.getInstance().putString("portrait", avatar);
     }
 
 
     //新浪微博相关
 
     public static String getAccessToken() {
-        return PrefUtils.getString("access_token", "");
+        return SharedPreferencesUtils.getInstance().getString("accessToken", "");
     }
 
     public static void setAccessToken(String access_token) {
-        PrefUtils.putString("access_token", access_token);
+        SharedPreferencesUtils.getInstance().putString("accessToken", access_token);
     }
 
     public static String getUid() {
-        return PrefUtils.getString("uid", "");
+        return SharedPreferencesUtils.getInstance().getString("uid", "");
     }
 
     public static void setUid(String uid) {
-        PrefUtils.putString("uid", uid);
+        SharedPreferencesUtils.getInstance().putString("uid", uid);
     }
 
     public static String getRefreshToken() {
-        return PrefUtils.getString("refresh_token", "");
+        return SharedPreferencesUtils.getInstance().getString("refreshToken", "");
     }
 
     public static void setRefreshToken(String refresh_token) {
-        PrefUtils.putString("refresh_token", refresh_token);
+        SharedPreferencesUtils.getInstance().putString("refreshToken", refresh_token);
     }
 
     public static long getExpiresIn() {
-        return PrefUtils.getLong("expires_in", 0);
+        return SharedPreferencesUtils.getInstance().getLong("expiresIn", 0);
     }
 
     public static void setExpiresIn(long expires_in) {
-        PrefUtils.putLong("expires_in", expires_in);
+        SharedPreferencesUtils.getInstance().putLong("expiresIn", expires_in);
     }
 
     /*

@@ -21,14 +21,14 @@ import xyz.zimuju.sample.http.subscriber.HttpResultSubscriber;
 import xyz.zimuju.sample.rx.RxUtils;
 import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 
-public class CategoryListFragment extends AbstractListFragment {
+public class CategoryFragment extends AbstractListFragment {
 
     private String mType;
 
-    public static CategoryListFragment newInstance(String type) {
+    public static CategoryFragment newInstance(String type) {
         Bundle args = new Bundle();
         args.putString("type", type);
-        CategoryListFragment fragment = new CategoryListFragment();
+        CategoryFragment fragment = new CategoryFragment();
         fragment.setArguments(args);
         return fragment;
     }

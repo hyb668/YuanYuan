@@ -11,10 +11,10 @@
         android:layout_height="match_parent"
         android:drawableLeft="@mipmap/icon_back_white"
         android:gravity="center"
+        android:text="返回"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:visibility="gone"
-        tools:text="返回"
         tools:visibility="visible"/>
 
     <TextView

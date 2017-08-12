@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextLinkUtil {
+public class TextLinkUtils {
 
 
     @SuppressLint("NewApi")

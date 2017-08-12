@@ -9,16 +9,23 @@
               android:orientation="vertical"
               android:showDividers="middle">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/mine_portrait_iv"
-        android:layout_width="150dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:src="@mipmap/icon_portrait_default"
-        app:riv_border_color="@color/navigation_text_pressed"
-        app:riv_border_width="2dp"
-        app:riv_oval="true"/>
+        android:background="@mipmap/icon_background_default">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/mine_portrait_iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_portrait_default"
+            app:riv_border_color="@color/navigation_text_pressed"
+            app:riv_border_width="5dp"
+            app:riv_oval="true"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/mine_username_tv"

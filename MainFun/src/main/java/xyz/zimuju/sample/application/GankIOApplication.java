@@ -12,7 +12,6 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobConfig;
 import xyz.zimuju.sample.component.MultiTypeInstaller;
 import xyz.zimuju.sample.constant.ConfigConstants;
-import xyz.zimuju.sample.util.PrefUtils;
 
 public class GankIOApplication extends Application {
     private static GankIOApplication gankIOApplication;
@@ -41,11 +40,8 @@ public class GankIOApplication extends Application {
 
         MultiTypeInstaller.install();
 
-        // 初始化SharedPreferences
-        PrefUtils.initialize(this);
-
         // 初始化UserApplication
-        UserApplication.getInstance().initialize(this);
+        UserApplication.getInstance().initialize(this, null);
 
         BmobConfig config = new BmobConfig.Builder(this)
                 //设置appkey

@@ -1,5 +1,6 @@
 package xyz.zimuju.sample.surface.news;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import xyz.zimuju.sample.adapter.gank.GankNewsAdapter;
 import xyz.zimuju.sample.entity.gank.Category;
 import xyz.zimuju.sample.entity.gank.Gank;
 import xyz.zimuju.sample.entity.gank.GankResult;
+import xyz.zimuju.sample.surface.content.WebActivity;
 import xyz.zimuju.sample.util.GankCategoryUtils;
 
 
@@ -117,7 +119,10 @@ public class NewsFragment extends BasalFragment<NewsPresenter> implements NewsVi
         }
 
         if (parent.getId() == containerRecyclerView.getId()) {
-
+            Gank gank = gankList.get(position);
+            Intent toWebIntent = new Intent(getContext(), WebActivity.class);
+            toWebIntent.putExtra("url", gank.getUrl());
+            startActivity(toWebIntent);
         }
     }
 

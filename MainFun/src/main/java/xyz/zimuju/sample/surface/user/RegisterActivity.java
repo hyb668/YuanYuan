@@ -11,9 +11,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobUser;
 import xyz.zimuju.common.basal.BasalActivity;
-import xyz.zimuju.common.util.TimeCountUtil;
+import xyz.zimuju.common.util.EmptyUtil;
+import xyz.zimuju.common.util.TimeCountUtils;
 import xyz.zimuju.common.widget.ClearEditText;
 import xyz.zimuju.sample.R;
+import xyz.zimuju.sample.util.UserPreferencesUtils;
 
 /*
  * @description RegisterActivity
@@ -50,7 +52,7 @@ public class RegisterActivity extends BasalActivity<RegisterPresenter> implement
     @BindView(R.id.login_register_tv)
     TextView register;
 
-    private TimeCountUtil timeCountUtil;
+    private TimeCountUtils timeCountUtil;
     private boolean clickable = false;
 
     @Override
@@ -76,7 +78,6 @@ public class RegisterActivity extends BasalActivity<RegisterPresenter> implement
     @Override
     protected void viewOption() {
         title.setText("注册");
-        back.setText("返回");
         back.setVisibility(View.VISIBLE);
 
         obtain.setBackgroundResource(R.drawable.shape_login_submit_pressed);
@@ -101,9 +102,8 @@ public class RegisterActivity extends BasalActivity<RegisterPresenter> implement
                 break;
 
             case R.id.login_obtain_tv:
-                timeCountUtil = new TimeCountUtil(getContext(), 60 * 1000, 1000, obtain);
-                timeCountUtil.setChangeListener(new TimeCountUtil.ChangeListener() {
-
+                timeCountUtil = new TimeCountUtils(getContext(), 60 * 1000, 1000, obtain);
+                timeCountUtil.setChangeListener(new TimeCountUtils.ChangeListener() {
                     @Override
                     public void finishListener() {
                         obtain.setClickable(true);
@@ -151,7 +151,10 @@ public class RegisterActivity extends BasalActivity<RegisterPresenter> implement
 
     @Override
     public void loginResult(BmobUser bmobUser) {
-        // 保存用户信息
+        if (EmptyUtil.isEmpty(bmobUser)) {
+            return;
+        }
+        UserPreferencesUtils.getInstance().saveUser(bmobUser);
         finish();
     }
 
@@ -203,7 +206,7 @@ public class RegisterActivity extends BasalActivity<RegisterPresenter> implement
                 case R.id.login_phone_cet:
                     if (s.length() == 11) {
                         obtain.setClickable(true);
-                        obtain.setBackgroundResource(R.drawable.shape_login_submit_normal);
+                        obtain.setBackgroundResource(R.drawable.selector_login_button);
                     } else {
                         obtain.setClickable(false);
                         obtain.setBackgroundResource(R.drawable.shape_login_submit_pressed);
@@ -213,7 +216,7 @@ public class RegisterActivity extends BasalActivity<RegisterPresenter> implement
                 case R.id.login_code_cet:
                     if (clickable && s.length() == 6) {
                         register.setClickable(true);
-                        register.setBackgroundResource(R.drawable.shape_login_submit_normal);
+                        register.setBackgroundResource(R.drawable.selector_login_button);
                     } else {
                         register.setClickable(false);
                         register.setBackgroundResource(R.drawable.shape_login_submit_pressed);
