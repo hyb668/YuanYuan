@@ -33,8 +33,9 @@ public class GankNewsAdapter extends MRecyclerViewAdapter<Gank> {
         GankViewHolder gankViewHolder = (GankViewHolder) viewHolder;
         Gank gank = dataList.get(position);
         if (gank != null) {
-            gankViewHolder.textView.setText(gank.getCreatedAt());
-            ImageLoader.displayImage(gankViewHolder.imageView, gank.getUrl());
+            gankViewHolder.create.setText(gank.getCreatedAt());
+            ImageLoader.displayImage(gankViewHolder.image, gank.getUrl());
+            gankViewHolder.description.setText(gank.getDesc());
         }
     }
 
@@ -44,14 +45,16 @@ public class GankNewsAdapter extends MRecyclerViewAdapter<Gank> {
     }
 
     private class GankViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView textView;
-        ImageView imageView;
+        TextView create;
+        ImageView image;
+        TextView description;
 
 
         GankViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.item_gank_create_tv);
-            imageView = (ImageView) itemView.findViewById(R.id.item_gank_image_iv);
+            create = (TextView) itemView.findViewById(R.id.item_gank_create_tv);
+            description = (TextView) itemView.findViewById(R.id.item_gank_desc_tv);
+            image = (ImageView) itemView.findViewById(R.id.item_gank_image_iv);
             itemView.setOnClickListener(this);
         }
 

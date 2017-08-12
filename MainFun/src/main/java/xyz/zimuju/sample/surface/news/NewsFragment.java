@@ -38,7 +38,6 @@ public class NewsFragment extends BasalFragment<NewsPresenter> implements NewsVi
     private List<Gank> gankList = new ArrayList<>();
     private int page = 1;
     private String categoryName = "all";
-    private int lastCategoryId = 0;
     private Category category;
     private LinearLayoutManager linearLayoutManager;
 
@@ -107,13 +106,12 @@ public class NewsFragment extends BasalFragment<NewsPresenter> implements NewsVi
     public void onItemClick(ViewGroup parent, View view, int position) {
         if (parent.getId() == categoryRecyclerView.getId()) {
             gankCategoryAdapter.setIndex(position);
-            lastCategoryId = position;
             category = GankCategoryUtils.getCategoryList(getContext()).get(position);
             categoryName = category.getName();
             if (position == 0) {
                 categoryName = "all";
-                page = 1;
             }
+            page = 1;
             presenter.getGank(categoryName, page);
             gankCategoryAdapter.notifyDataSetChanged();
         }
@@ -129,7 +127,7 @@ public class NewsFragment extends BasalFragment<NewsPresenter> implements NewsVi
             return;
         }
 
-        if (category.getId() == lastCategoryId && page == 1) {
+        if (page == 1) {
             gankList.clear();
         }
 
