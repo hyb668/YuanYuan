@@ -1,6 +1,5 @@
-package xyz.zimuju.sample.surface.gank;
+package xyz.zimuju.common.basal;
 
-import xyz.zimuju.common.basal.BasalActivity;
 import xyz.zimuju.common.util.ToastUtils;
 
 /*
@@ -9,7 +8,7 @@ import xyz.zimuju.common.util.ToastUtils;
  * @time 2017/8/3 - 10:49
  * @version 1.0.0
  */
-public abstract class BaseMainActivity extends BasalActivity {
+public abstract class BasalMainActivity extends BasalActivity {
     private static final long MAX_DOUBLE_BACK_DURATION = 1500;
     private long lastBackKeyDownTick = 0;
 

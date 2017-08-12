@@ -21,7 +21,7 @@ import xyz.zimuju.sample.event.LoginEvent;
 import xyz.zimuju.sample.loader.ImageLoader;
 import xyz.zimuju.sample.rx.RxBus;
 import xyz.zimuju.sample.surface.about.AboutActivity;
-import xyz.zimuju.sample.surface.gank.GankHomeActivity;
+import xyz.zimuju.sample.surface.common.HomeActivity;
 import xyz.zimuju.sample.surface.gank.SubActivity;
 import xyz.zimuju.sample.util.AppUtils;
 import xyz.zimuju.sample.util.AuthorityUtils;
@@ -137,7 +137,7 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
                 break;
 
             case R.id.mine_gank_tv:
-                startActivity(new Intent(getContext(), GankHomeActivity.class));
+                startActivity(new Intent(getContext(), HomeActivity.class));
                 break;
         }
     }

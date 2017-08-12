@@ -1,4 +1,4 @@
-package xyz.zimuju.sample.surface.gank;
+package xyz.zimuju.sample.surface.common;
 
 
 import android.support.annotation.NonNull;
@@ -14,14 +14,16 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import xyz.zimuju.common.basal.BasalFragment;
+import xyz.zimuju.common.basal.BasalMainActivity;
 import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.sample.R;
+import xyz.zimuju.sample.surface.gank.AbstractListFragment;
 import xyz.zimuju.sample.surface.news.HomeFragment;
 import xyz.zimuju.sample.surface.read.ReadingTabFragment;
 import xyz.zimuju.sample.surface.search.SearchActivity;
 import xyz.zimuju.sample.util.ViewUtils;
 
-public class GankHomeActivity extends BaseMainActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BasalMainActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.appbar_layout)
     AppBarLayout mAppBarLayout;
 
@@ -36,7 +38,7 @@ public class GankHomeActivity extends BaseMainActivity implements BottomNavigati
 
     @Override
     protected int getLayoutId() {
-        return R.layout.gank_activity_main;
+        return R.layout.activity_home;
     }
 
     @Override
@@ -72,7 +74,7 @@ public class GankHomeActivity extends BaseMainActivity implements BottomNavigati
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchActivity.start(GankHomeActivity.this);
+                SearchActivity.start(HomeActivity.this);
             }
         });
     }
