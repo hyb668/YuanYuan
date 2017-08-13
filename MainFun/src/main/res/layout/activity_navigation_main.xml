@@ -31,7 +31,7 @@
             android:drawableTop="@drawable/selector_navigation_news"
             android:gravity="center"
             android:text="@string/bottom_tab_know"
-            android:textColor="@drawable/seletor_navigation_text"
+            android:textColor="@drawable/selector_navigation_text"
             android:textSize="@dimen/text_size_normal"/>
 
         <RadioButton
@@ -45,7 +45,7 @@
             android:drawableTop="@drawable/selector_navigation_discovery"
             android:gravity="center"
             android:text="@string/bottom_tab_wantknow"
-            android:textColor="@drawable/seletor_navigation_text"
+            android:textColor="@drawable/selector_navigation_text"
             android:textSize="12sp"/>
 
         <RadioButton
@@ -59,7 +59,7 @@
             android:drawableTop="@drawable/selector_navigation_mine"
             android:gravity="center"
             android:text="@string/bottom_tab_my"
-            android:textColor="@drawable/seletor_navigation_text"
+            android:textColor="@drawable/selector_navigation_text"
             android:textSize="12sp"/>
     </RadioGroup>
 </LinearLayout>

@@ -65,11 +65,11 @@ public class NavigationActivity extends FragmentActivity implements RadioGroup.O
     public void onBackPressed() {
         if ((System.currentTimeMillis() - exitTime) > 2000) {
             ToastUtils.showToast(this, "再按一次退出程序");
-            exitTime = System.currentTimeMillis();
         } else {
             System.exit(0);
             android.os.Process.killProcess(android.os.Process.myPid());
         }
+        exitTime = System.currentTimeMillis();
     }
 
     @Override

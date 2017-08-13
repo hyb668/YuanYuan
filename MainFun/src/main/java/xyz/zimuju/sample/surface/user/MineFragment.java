@@ -20,7 +20,6 @@ import xyz.zimuju.sample.event.LoginEvent;
 import xyz.zimuju.sample.loader.ImageLoader;
 import xyz.zimuju.sample.rx.RxBus;
 import xyz.zimuju.sample.surface.about.AboutActivity;
-import xyz.zimuju.sample.surface.common.HomeActivity;
 import xyz.zimuju.sample.surface.gank.SubActivity;
 import xyz.zimuju.sample.util.AppUtils;
 import xyz.zimuju.sample.util.AuthorityUtils;
@@ -44,9 +43,6 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
 
     @BindView(R.id.mine_logout_tv)
     TextView logout;
-
-    @BindView(R.id.mine_gank_tv)
-    TextView toGank;
 
     @Override
     protected int getLayoutId() {
@@ -96,7 +92,7 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
         super.onResume();
     }
 
-    @OnClick({R.id.mine_collect_tv, R.id.mine_username_tv, R.id.mine_feedback_tv, R.id.mine_about_tv, R.id.mine_logout_tv, R.id.mine_clear_cache_tv, R.id.mine_gank_tv})
+    @OnClick({R.id.mine_collect_tv, R.id.mine_username_tv, R.id.mine_feedback_tv, R.id.mine_about_tv, R.id.mine_logout_tv, R.id.mine_clear_cache_tv})
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -141,10 +137,6 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
                         clearCache.setText(getString(R.string.mine_cache_clear));
                     }
                 });
-                break;
-
-            case R.id.mine_gank_tv:
-                startActivity(new Intent(getContext(), HomeActivity.class));
                 break;
         }
     }

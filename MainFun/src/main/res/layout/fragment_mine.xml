@@ -42,11 +42,6 @@
         android:text="@string/mine_feedback"/>
 
     <TextView
-        android:id="@+id/mine_gank_tv"
-        style="@style/MineItem"
-        android:text="@string/mine_gank"/>
-
-    <TextView
         android:id="@+id/mine_about_tv"
         style="@style/MineItem"
         android:text="@string/mine_about"/>
@@ -56,5 +51,5 @@
         style="@style/MineItem"
         android:text="@string/mine_exit"
         android:visibility="gone"
-        tools:visibility="gone"/>
+        tools:visibility="visible"/>
 </LinearLayout>

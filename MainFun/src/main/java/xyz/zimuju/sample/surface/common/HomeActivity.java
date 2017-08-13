@@ -42,31 +42,14 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
     }
 
     @Override
-    protected void onBeforeInflate() {
-        fragmentManager = getSupportFragmentManager();
-    }
-
-    @Override
     protected BasalPresenter initPresenter() {
         return null;
     }
 
-    private void hideAppBar() {
-        ViewGroup.LayoutParams layoutParams = mAppBarLayout.getLayoutParams();
-        if (layoutParams.height == 0) return;
-        layoutParams.height = 0;
-        mAppBarLayout.setLayoutParams(layoutParams);
-    }
-
-    private void showAppBar() {
-        ViewGroup.LayoutParams layoutParams = mAppBarLayout.getLayoutParams();
-        if (layoutParams.height != 0) return;
-        layoutParams.height = getResources().getDimensionPixelSize(R.dimen.app_bar_height);
-        mAppBarLayout.setLayoutParams(layoutParams);
-    }
-
     @Override
     protected void initData() {
+        // BmobUpdateAgent.update(this);
+        fragmentManager = getSupportFragmentManager();
         switchFragment(0);
     }
 
@@ -81,33 +64,6 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
                 SearchActivity.start(HomeActivity.this);
             }
         });
-    }
-
-    private void switchFragment(int index) {
-        Fragment toFragment = fragmentManager.findFragmentByTag(index + "");
-        if (toFragment == null) {
-            if (index == 0) {
-                toFragment = ViewUtils.createFragment(HomeFragment.class);
-            } else if (index == 1) {
-                toFragment = ViewUtils.createFragment(ReadingFragment.class);
-            } else {
-                toFragment = ViewUtils.createFragment(HomeFragment.class);
-            }
-        }
-
-        if (toFragment == currentFragment && currentFragment instanceof BasalFragment) {
-            ((BasalFragment) currentFragment).refreshData();
-        } else if (toFragment.isAdded()) {
-            fragmentManager.beginTransaction().hide(currentFragment).show(toFragment).commit();
-        } else {
-            toFragment.setUserVisibleHint(true);
-            if (currentFragment != null) {
-                fragmentManager.beginTransaction().hide(currentFragment).add(R.id.frame_content, toFragment, index + "").commit();
-            } else {
-                fragmentManager.beginTransaction().add(R.id.frame_content, toFragment, index + "").commit();
-            }
-        }
-        currentFragment = toFragment;
     }
 
     @Override
@@ -136,5 +92,46 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
                 break;
         }
         return false;
+    }
+
+    private void hideAppBar() {
+        ViewGroup.LayoutParams layoutParams = mAppBarLayout.getLayoutParams();
+        if (layoutParams.height == 0) return;
+        layoutParams.height = 0;
+        mAppBarLayout.setLayoutParams(layoutParams);
+    }
+
+    private void showAppBar() {
+        ViewGroup.LayoutParams layoutParams = mAppBarLayout.getLayoutParams();
+        if (layoutParams.height != 0) return;
+        layoutParams.height = getResources().getDimensionPixelSize(R.dimen.app_bar_height);
+        mAppBarLayout.setLayoutParams(layoutParams);
+    }
+
+    private void switchFragment(int index) {
+        Fragment toFragment = fragmentManager.findFragmentByTag(index + "");
+        if (toFragment == null) {
+            if (index == 0) {
+                toFragment = ViewUtils.createFragment(HomeFragment.class);
+            } else if (index == 1) {
+                toFragment = ViewUtils.createFragment(ReadingFragment.class);
+            } else {
+                toFragment = ViewUtils.createFragment(HomeFragment.class);
+            }
+        }
+
+        if (toFragment == currentFragment && currentFragment instanceof BasalFragment) {
+            ((BasalFragment) currentFragment).refreshData();
+        } else if (toFragment.isAdded()) {
+            fragmentManager.beginTransaction().hide(currentFragment).show(toFragment).commit();
+        } else {
+            toFragment.setUserVisibleHint(true);
+            if (currentFragment != null) {
+                fragmentManager.beginTransaction().hide(currentFragment).add(R.id.frame_content, toFragment, index + "").commit();
+            } else {
+                fragmentManager.beginTransaction().add(R.id.frame_content, toFragment, index + "").commit();
+            }
+        }
+        currentFragment = toFragment;
     }
 }

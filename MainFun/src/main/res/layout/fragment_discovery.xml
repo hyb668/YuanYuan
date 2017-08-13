@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center"
+              android:background="#929292"
               android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="最新资讯"
-        android:textSize="18sp"/>
+    <RadioGroup
+        android:id="@+id/discovery_switcher_rg"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@android:color/white"
+        android:divider="@drawable/common_shape_horizontal_divider"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <RadioButton
+            android:id="@+id/discovery_home_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_common_button"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="测试一"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/discovery_reader_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_common_button"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:text="测试二"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/discovery_container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </LinearLayout>
