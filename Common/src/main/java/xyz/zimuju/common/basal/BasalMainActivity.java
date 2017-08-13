@@ -1,5 +1,7 @@
 package xyz.zimuju.common.basal;
 
+import android.os.Bundle;
+
 import xyz.zimuju.common.util.ToastUtils;
 
 /*
@@ -11,6 +13,16 @@ import xyz.zimuju.common.util.ToastUtils;
 public abstract class BasalMainActivity extends BasalActivity {
     private static final long MAX_DOUBLE_BACK_DURATION = 1500;
     private long lastBackKeyDownTick = 0;
+
+    protected abstract void onBeforeInflate();
+
+    protected abstract boolean beforeOnBackPressed();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        onBeforeInflate();
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public void onBackPressed() {
@@ -25,7 +37,4 @@ public abstract class BasalMainActivity extends BasalActivity {
         }
     }
 
-    protected boolean beforeOnBackPressed() {
-        return true;
-    }
 }

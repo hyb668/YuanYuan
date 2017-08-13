@@ -426,7 +426,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     }
 
     /**
-     * Will re-initialize the HorizontalListView to remove all child views rendered and reset to initial configuration.
+     * Will re-onBeforeInflate the HorizontalListView to remove all child views rendered and reset to initial configuration.
      */
     private void reset() {
         initView();
@@ -468,7 +468,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     }
 
     /**
-     * Will create and initialize a cache for the given number of different types of views.
+     * Will create and onBeforeInflate a cache for the given number of different types of views.
      *
      * @param viewTypeCount - The total number of different views supported
      */

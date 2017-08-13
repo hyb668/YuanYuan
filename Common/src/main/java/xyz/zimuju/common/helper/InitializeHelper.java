@@ -10,7 +10,7 @@ import android.content.Context;
  */
 public interface InitializeHelper {
     /*
-     * void initialize(Context context);
+     * void onBeforeInflate(Context context);
      * 因为SharedPreferences是存储少量的数据，
      * 所以尽量把部分数据拆分成多个文件存储。
      * 而每个文件根据文件名区分，

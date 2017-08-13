@@ -77,7 +77,7 @@ public class BaseWebActivity extends AppCompatActivity {
         mAgentWeb.getLoader().loadUrl(getUrl());
 
         long n = System.currentTimeMillis();
-        Log.i("Info", "initialize used time:" + (n - p));
+        Log.i("Info", "onBeforeInflate used time:" + (n - p));
 
     }
 

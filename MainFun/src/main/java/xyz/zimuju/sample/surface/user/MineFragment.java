@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.SpannableStringBuilder;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -14,6 +13,7 @@ import xyz.zimuju.common.basal.BasalFragment;
 import xyz.zimuju.common.basal.BasalPresenter;
 import xyz.zimuju.common.util.EmptyUtil;
 import xyz.zimuju.common.util.ToastUtils;
+import xyz.zimuju.common.widget.roundimageview.CircleImageView;
 import xyz.zimuju.sample.R;
 import xyz.zimuju.sample.component.SettingCenter;
 import xyz.zimuju.sample.event.LoginEvent;
@@ -31,7 +31,7 @@ public class MineFragment extends BasalFragment implements View.OnClickListener 
     TextView username;
 
     @BindView(R.id.mine_portrait_iv)
-    ImageView portrait;
+    CircleImageView portrait;
 
     @BindView(R.id.mine_clear_cache_tv)
     TextView clearCache;

@@ -42,6 +42,11 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
     }
 
     @Override
+    protected void onBeforeInflate() {
+        fragmentManager = getSupportFragmentManager();
+    }
+
+    @Override
     protected BasalPresenter initPresenter() {
         return null;
     }
@@ -62,7 +67,6 @@ public class HomeActivity extends BasalMainActivity implements BottomNavigationV
 
     @Override
     protected void initData() {
-        fragmentManager = getSupportFragmentManager();
         switchFragment(0);
     }
 
